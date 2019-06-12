@@ -1,0 +1,57 @@
+<ion-view view-title="筛选" cache-view="false">
+  <!--开票明细报表筛选条件-->
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-light icon-small asset-icon-back"
+            style="font-size: 25px;color: white;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-block button-light" style="margin:0px;font-size: 14px;color: white" ng-click="goTrue()">确定</button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="content-bg">
+    <div class="row row-no-padding light-bg"  style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;"ng-click="goSelectAssetType()">
+      <div class="col col-40" style="padding: 10px;margin-left: 2%">资产类别：</div>
+      <div class="col col-30 col-center text-right">
+        <input type="text" class="text-right" style="margin-left: 30%"ng-model="modelData.assettype"></input>
+      </div>
+      <div class="col col-25 text-right col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+      </div>
+    </div>
+    <div  class="row row-no-padding light-bg" style="margin-top:10px;margin-bottom: 5px;border-top: solid 1px #ddd;border-bottom: solid 1px #ddd;"ng-click="goSelectdepartment()"()">
+      <div class="col col-33" style="padding: 10px">使用部门：</div>
+      <div class="col col-57 col-center text-right">
+        <div class="font-small">{{modelData.department}}</div>
+      </div>
+      <div class="col col-10 text-center col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>
+      </div>
+    </div>
+    <div class="row row-no-padding light-bg " style="margin:10px 0px 0px 0px;border-top: solid 1px #ddd;border-bottom: solid 1px #f0f0f0;"
+         ng-click="addDateRange()">
+      <div class="col col-30" style="padding: 10px">日期范围：</div>
+      <div class="col col-60 col-center text-right">
+        <div class="font-small">{{modelData.range}}</div>
+      </div>
+      <div class="col col-10 text-center col-center">
+        <i class="icon asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>
+      </div>
+    </div>
+    <div class="row row-no-padding light-bg" style="margin:0px;padding: 0px;border-top: 5px solid #ddd"></div>
+    <div class="row row-no-padding light-bg" style="margin-bottom:0px;padding: 0px;border-bottom: solid 1px #ddd;">
+      <div class="col col-40">
+        <button class="button-clear text-right button-middle" style="width: 100%;color: #111;font-size: 14px;padding-left:8px;" ng-model="modelData.startYearMonth" ng-click="openDatePicker(modelData.startYearMonth,'beginDate')">{{modelData.startYearMonth|date:'yyyy-MM-dd'}}</button>
+      </div>
+      <div class="col col-20 text-center" style="padding: 10px;background-color: white">至</div>
+      <div class="col col-40">
+        <button class="button-clear text-left button-middle" style="width: 100%;color: #111;font-size: 14px;padding-right:30px;" ng-model="modelData.endYearMonth" ng-click="openDatePicker(modelData.endYearMonth,'endDate')">{{modelData.endYearMonth|date:'yyyy-MM-dd'}}</button>
+      </div>
+      <div class="col col text-center col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>
+      </div>
+    </div>
+    
+  </ion-content>
+</ion-view>
+

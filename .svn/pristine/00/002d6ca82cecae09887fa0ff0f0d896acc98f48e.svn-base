@@ -1,0 +1,51 @@
+<ion-view view-title="采购单">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: white;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content style="">
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+        <input type="search" placeholder="请输关键字" ng-model="searchContent">
+      </label>
+    </div>
+    <div class="grid font-small list-borderless content-bg row-center">
+      <div>
+        <ion-list class="has-tabs-top ">
+          <div ng-repeat="item in orderBillList | filter:searchContent" ng-click="chioce(item)"
+               style="margin:10px 0px 0px 0px;background-color: #ffffff;border-radius: 3px;">
+            <div class="line" style="background: #ddd;"></div>
+            <div class="row row-no-padding padding-horizontal no-margin">
+              <div style="width: 100%" class=" font-small ">
+                <div class="row row-no-padding" style="border-bottom: solid 1px #dedfe0;margin:0px;">
+                  <div class="col col-20"
+                       style="line-height: 15px;height: 18px;border-radius: 5px;margin: 10px 10px 5px 5px;padding-top:1px;text-align: center;color: #fff;float: left;
+                             background-color:#4b8dfa;">
+                    采购单
+                  </div>
+                  <div class="col text-right" style="color: green;padding: 10px 5px 5px 5px"></div>
+                </div>
+                <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;margin-left: 20px">
+                  <div class="col col-50">
+                    采购人：{{item.buyerName}}
+                  </div>
+                  <div class="col col-50">
+                    采购日期：{{item.orderDate}}
+                  </div>
+                </div>
+                <div class="col col-66">
+                  采购单号：{{item.cgCode}}
+                </div>
+              </div>
+            </div>
+            <div class="line" style="background: #ddd;"></div>
+          </div>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

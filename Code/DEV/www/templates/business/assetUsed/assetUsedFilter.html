@@ -1,0 +1,45 @@
+<ion-view view-title="筛选" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="font-size: 25px;color: white;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light" style="margin:0px;font-size: 14px;color: white"
+              ng-click="goTrue()">确定
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="content-bg">
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-top: solid 1px #ddd;border-bottom: solid 1px #ddd;">
+      <div class="col col-33" style="padding: 10px">审批状态：</div>
+      <label class="item-input-wrapper">
+        <select style="background-color: white;width: 80%; border: none;margin-left: 7%;
+            appearance:none;-moz-appearance:none;-webkit-appearance:none;color:black;background-color: white" class="col-center"
+                ng-model="modelData.statusCode"  ng-options="approvalStatusList.statusName for approvalStatusList in approvalStatusList">
+          <option selected="selected"  value="" >请选择</option>
+        </select>
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 20px;color: #c0c0c0"></i>
+      </label>
+    </div>
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-top: solid 1px #ddd;border-bottom: solid 1px #ddd;">
+      <div class="col col-33" style="padding: 10px">出库人：</div>
+      <div class="col col-67  text-right">
+        <input type="text" style="overflow:hidden;padding-left: 20px;" placeholder="请输入经办人姓名"
+               ng-model="modelData.outbounderName">
+      </div>
+    </div>
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-top: solid 1px #ddd;border-bottom: solid 1px #ddd;">
+      <div class="col col-33" style="padding: 10px">出库时间：</div>
+      <label class="item-input-wrapper">
+        <select style="background-color: white;width: 80%; border: none;margin-left: 7%;
+            appearance:none;-moz-appearance:none;-webkit-appearance:none;color:black;background-color: white" class="col-center"
+                ng-model="modelData.dateFilter"  ng-options="outboundDateList.dateFilter for outboundDateList in outboundDateList">
+          <option selected="selected"  value="" >请选择</option>
+        </select>
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 20px;color: #c0c0c0"></i>
+      </label>
+    </div>
+  </ion-content>
+</ion-view>
+

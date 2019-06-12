@@ -1,0 +1,116 @@
+<ion-view  view-title="退库单" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back" style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content class="" style="height: 85%">
+    <!--下拉刷新-->
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+
+    <div class="row row-no-padding light-bg"
+         style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px;margin-left: 2%">退库人：</div>
+      <div class="col col-30 col-center text-right">
+        <input type="text" class="text-right" style="margin-left: 40%" ng-model="modelData.retireName"></input>
+      </div>
+    </div>
+
+    <div class="row row-no-padding light-bg"
+         style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px;margin-left: 2%">退库日期：</div>
+      <div class="col col-30 col-center text-right">
+        <div class="button-clear text-right" style="width: 100%;color: #111;font-size: 14px;margin-left: 80%"
+             ng-model="modelData.receiverDate">{{modelData.receiverDate|date:'yyyy-MM-dd'}}
+        </div>
+      </div>
+      <div class="col col-25 text-right col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px;margin-left: 2%">部门名称：</div>
+      <div class="col col-30 col-center text-right">
+        <input type="text" style="width:90%;margin-left:80%"class="text-right" placeholder="请选择使用部门" ng-model="modelData.returnOfficeName" />
+      </div>
+      <div class="col col-25 text-right col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+    <div class="row row-no-padding light-bg" ng-click="selectApply()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px;margin-left: 2%">审批人：</div>
+      <div class="col col-30 col-center text-right">
+        <input type="text" style="width:90%;margin-left:80%"class="text-right" placeholder="请选择审批人" ng-model="approval.refName" />
+      </div>
+      <div class="col col-25 text-right col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+    <div class="item item-input">
+      <div class="input-label" style="font-size: 14px;width: auto;color: black">备注：</div>
+      <input type="text" ng-model="modelData.remarks" class="text-right" placeholder="请输入备注">
+    </div>
+
+    <!--子表-->
+    <div>
+      <div class="row row-no-padding no-margin" style="line-height: 10px;vertical-align: middle;"
+           ng-repeat="item in items">
+        <div class="col"
+             style="width:100%;background-color:#F5F5F5;border-radius: 3px;margin: 10px;padding:15px;display: inline-block">
+          <div class="row" style="margin: 0;padding: 0;background-color:#F5F5F5;">
+            <div class="col col-33 col-center font-small"
+                 style="color: #938E99;">资产{{item.detailId}}
+            </div>
+            <div class="col col-66 text-right col-center" ng-if=item.detailId==1?false:true>
+              <i style=" font-size: 14px;color: #0072ff;padding-right: 10px"
+                 ng-click="showConfirm(item.detailId)">删除</i>
+            </div>
+          </div>
+          <div class="line" style="background: #ddd;"></div>
+          <div class="row row-no-padding padding-horizontal no-margin">
+            <div style="width: 100%" class=" font-small " >
+              <div class="row row-no-padding" style="border-bottom: solid 1px #dedfe0;margin:0px;">
+                <div class="col col-30"
+                     style="line-height: 15px;height: 18px;border-radius: 5px;margin: 10px 10px 5px 5px;padding-top:1px;text-align: center;color: #fff;float: left;
+                             background-color:#4b8dfa;">
+                  状态：{{item.assetStatus=='0'?'闲置':(item.assetStatus=='1'?'领用':(item.assetStatus=='2'?'报废':(item.assetStatus=='3'?'调拨中':(item.assetStatus=='4'?'已捐献':(item.assetStatus=='5'?'到新单位':'到新单位')))))}}
+                </div>
+                <div class="col text-right" style="padding: 10px 5px 5px 5px;color: rgb(255,126,0)">
+                  {{item.buyDate.substr(0,10)}}
+                </div>
+              </div>
+              <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;">
+                <div class="col col-50">资产类别：{{item.sortName.substr(0,6)}}</div>
+                <div class="col col-50">资产名称：{{item.assetName.substr(0,7)}}</div>
+              </div>
+              <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;">
+                <div class="col col-50">使用人：{{item.userName}}</div>
+                <div class="col col-50">使用部门：{{item.officeName}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="line" style="background: #ddd;"></div>
+    </div>
+
+    <div class="text-center padding-top padding-bottom asset-icon-add light-bg"
+         style="border-bottom:1px;color: #0072ff"
+         ng-click="getreturnInfoDtl()">
+      <span>添加资产</span>
+    </div>
+    <div>
+      <button class="button button-block"
+              style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: rgb(75,141,250);color: white"
+              ng-click="toSubmit()">提交
+      </button>
+    </div>
+    <!--上拉加载-->
+    <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

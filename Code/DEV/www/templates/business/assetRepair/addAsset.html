@@ -1,0 +1,185 @@
+<ion-view view-title="资产添加" >
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back" style="font-size: 25px;color: white;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light" style="margin:0px;font-size: 14px;color: white" ng-click="toSubmit()">保存</button>
+    </ion-nav-buttons>
+    <ion-content class="content-bg has-header has-footer">
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">资产编码：</div>
+        <div class="col col-67 col-center text-right">
+          <div class="col col-33 text-left font-small" style="padding-left:15px;color: #777777"></div>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">资产类别：</div>
+        <div class="col col-50 col-center text-right">
+          <div class="col text-left font-small" style="color: #333333"></div>
+        </div>
+        <div class="col col-10 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">资产名称：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%"class="text-right "placeholder="例如：电脑、家具等" ng-model="modelData.assetName">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">规格型号：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%"class="text-right "placeholder="例如：联想Y570、布艺沙发等" ng-model="modelData.assetStd">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">SN号：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%"class="text-right"placeholder="请扫码或手工输入">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">计量单位：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 10%"class="text-right"placeholder="例如：个、台、箱等" ng-model="modelData.unit">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">金额：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%"class="text-right" placeholder="请输入金额" ng-model="modelData.money">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" ng-click="goSelectCompany()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px">使用公司：</div>
+      <div class="col col-30 col-center text-right">
+        <input type="text" style="width:90%;margin-left: 85%"class="text-right" placeholder="请选择使用公司" ng-model="company.name" />
+      </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+    </div>
+
+      <div class="row row-no-padding light-bg" ng-click="goSelectdepartment()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px">使用部门：</div>
+        <div class="col col-30 col-center text-right">
+          <input  type="text" style="width:90%;margin-left: 85%"class="text-right" placeholder="请选择使用部门" ng-model="department.departmenName"/>
+         <!-- <div class="row row-no-padding" style="margin: 0px 0px 10px 0px;font-size: 13px;color:#777777;" placeholder="请选择使用部门"></div>-->
+        </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px">购入日期：</div>
+        <div class="col col-30" style="padding-top: 3px">
+         <button class="button-clear text-left button-middle bold text-right" style="padding:0px;width: 100%;color: #333333;font-size: 13px;margin-left: 75%" ng-model="modelData.beginDate" ng-click="openDatePicker(modelData.beginDate,'beginDate')">{{modelData.beginDate|date:'yyyy-MM-dd'}}</button>
+        </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px">管理员：</div>
+        <div class="col col-30 col-center text-right">
+          <div class="row row-no-padding" style="margin: 0px 0px 1px 0px;font-size: 14px;color:#000000;margin-left: 85%">{{user.userName}}</div>
+        </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;"ng-click="goSelectPerson()">
+        <div class="col col-40" style="padding: 10px">使用人：</div>
+        <div class="col col-30  text-right">
+          <input style="width:90%;margin-left: 85%"type="text" class="text-right" ng-model="leader.userName" placeholder="请选择使用人">
+        </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" ng-click="goSelectCompany()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px">所属公司：</div>
+        <div class="col col-30 col-center text-right">
+          <input type="text" style="width:90%;margin-left: 85%"class="text-right" placeholder="请选择所属公司" ng-model="modelData.companys" />
+          <!--<div class="row row-no-padding" style="margin: 0px 0px 10px 0px;font-size: 13px;color:#777777;"placeholder="请选择使用公司"></div>-->
+        </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-45 col-center" style="padding: 10px">区域：</div>
+        <div class="col col col-center">
+          <select style="background-color: white ;width: 100% ;height:100%;border: none;padding-left: 100px;
+            appearance:none;-moz-appearance:none;-webkit-appearance:none;color:black;background-color: white"
+                  ng-model="modelData.area" ng-change="selectedUnit=''" ng-options="district.name for district in districts">
+            <option value="" >本地</option>
+          </select>
+          <!--<div class="font-small">{{approval.refName}}</div>-->
+        </div>
+        <div class="col col-10 " style="padding-top: 8px";>
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">存放地点：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%"class="text-right "placeholder="请输入存放地点" ng-model="modelData.place">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-36" style="padding: 10px">使用年限：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%"class="text-right "placeholder="请输入使用年限" ng-model="modelData.time">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">供应商:</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%"class="text-right "placeholder="请输入供应商" ng-model="modelData.supplier">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-45 col-center" style="padding: 10px">来源：</div>
+        <div class="col col col-center">
+          <select style="background-color: white ;width: 100% ;height:100%;border: none;padding-left: 100px;
+            appearance:none;-moz-appearance:none;-webkit-appearance:none;color:black;background-color: white"
+                  ng-model="modelData.source" ng-change="selectedUnit=''" ng-options="district.name for district in source">
+            <option value="" >购入</option>
+          </select>
+          <!--<div class="font-small">{{approval.refName}}</div>-->
+        </div>
+        <div class="col col-10 " style="padding-top: 8px";>
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      </div>
+      <div class="row row-no-padding light-bg" style="border-top:1px solid #ddd;border-bottom:1px solid #ddd;margin-bottom: 0px;">
+        <div class="col col-40" style="padding: 10px 0px 10px 10px;width: 100%">备注：</div>
+        <div class="col col-60">
+            <textarea type="text" style="padding-top:10px;width:90%;margin-right: 20%;height: 80px;resize:none;" class="text-right " placeholder="请输入备注"
+                      ng-model="modelData.content"></textarea>
+        </div>
+      </div>
+
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+          <div class="row row-no-padding"
+               ng-click="addAttachment()">
+            <div class="col col-33 col-center" style="padding: 10px;">照片：</div>
+            <div class="col col-60 text-right" style="padding-top: 8px">
+              <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+            </div>
+          </div>
+          <div class="row" style="display: inline-block" ng-if="modelData.imageList.length>0">
+            <div class="col col-25 float-left" style="display: inline-block" ng-repeat="img in modelData.imageList" >
+              <img src="{{img.url}}" width="70%" height="50px;" class="border-all" ng-click="shouBigImage()"   ng-if="img.pathName!=undefined">
+              <i class="-icon-delete_1" style="font-size: 17px;color: #444; position: absolute;" ng-click="removeImg(img,$index)"  ng-if="img.pathName!=undefined"></i>
+            </div>
+          </div>
+      </div>
+    </ion-content>
+</ion-view>
+asset

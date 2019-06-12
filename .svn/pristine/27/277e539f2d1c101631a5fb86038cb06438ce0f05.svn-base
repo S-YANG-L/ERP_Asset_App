@@ -1,0 +1,18 @@
+<ion-view view-title="选择调拨类型" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-light icon-small asset-icon-back"style="font-size: 25px;color: white;width: 50px;padding-right: 30px"  ng-click="goBack()"></button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="no-padding" overflow-scroll="true">
+    <div style="padding-left: 15px;">
+      <div class="row row-no-padding no-margin" style="line-height: 30px;vertical-align: middle;" ng-repeat="item in dictTypeList" ng-click="selectdictType(item)">
+        <div class="col" style="border-bottom: solid 1px #eeeeee;">
+          <div class="padding-top">
+            {{item.dictName}}&nbsp;
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,34 @@
+<ion-view view-title="固定资产管理系统" >
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button  button-clear button-light icon-small asset-icon-menu "
+              style="color: white;font-size: 25px;"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div ng-show="ifShow" style="height: 40px;width: auto;background-color: rgb(240,240,240)">
+      <p style="padding: 10px 10px 10px 30px;">资产</p>
+    </div>
+    <div class="appList" style="height: auto">
+      <div ng-repeat="item in playlists" style="display: inline-block;padding-top: 10px">
+        <div style="width: 120px;height: 120px;" ng-click="goToItemPage(item.permission)">
+          <img src="img/{{item.permission}}.png"/>
+          <p class="font-small" style="font-size: 15px">{{item.title}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div ng-show="ifShow1" style="height: 40px;width: auto;background-color: rgb(240,240,240)">
+      <p style="padding: 10px 10px 10px 30px;">办公用品管理</p>
+    </div>
+    <div class="appList" style="height: auto">
+      <div ng-repeat="item in playlists1" style="display: inline-block;padding-top: 10px">
+        <div style="width: 120px;height: 120px;" ng-click="goToItemPage(item.permission)">
+          <img src="img/{{item.permission}}.png"/>
+          <p class="font-small" style="font-size: 15px">{{item.title}}</p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

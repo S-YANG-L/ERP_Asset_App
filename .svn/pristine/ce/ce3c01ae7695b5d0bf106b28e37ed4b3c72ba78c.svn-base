@@ -1,0 +1,179 @@
+<ion-view title="调拨单" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <!--button-clear-->
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="" style="height: 85%">
+
+
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-33" style="padding: 10px"><span style="color:white;">*</span>调拨人：</div>
+      <div class="col col-67 col-center text-right">
+        <input type="text" style="width:90%;margin-right: 20%;background-color: white"class="text-right" disabled="disabled"ng-model="modelData.operatorName">
+      </div>
+    </div>
+    <!--调拨日期-->
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px;margin-left: 1%">调拨日期：</div>
+         <div class="button-clear text-right"
+           style="width: 160px;color: #111;font-size: 14px;margin-top: 10px;margin-left: 50px"
+           ng-model="modelData.useBeginDate"
+           ng-click="openDatePicker()">{{modelData.allotDate|date:'yyyy-MM-dd'}}
+         </div>
+      <div class="col  text-right col-center" style="margin-right: 14px">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-33" style="padding: 10px"><span style="color:white;">*</span>部门：</div>
+      <div class="col col-67 col-center text-right">
+        <input type="text" style="width:90%;margin-right: 20%;background-color: white"class="text-right" disabled="disabled"ng-model="modelData.officeName">
+      </div>
+    </div>
+
+    <!--调拨类型-->
+    <div class="row row-no-padding light-bg" ng-click="choiceDictType()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px"><span style="color:red;">*</span>调拨类型：</div>
+      <div class="col col-50 col-center text-right">
+        <input type="text" style="width:90%;margin-left: 15%"class="text-right" placeholder=" 请选择调拨类型" ng-model="modelData.allotTypeName" />
+      </div>
+      <div class="col col-75 col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;margin-left:5%;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+    <!--调拨后部门-->
+    <div class="row row-no-padding light-bg" ng-click="goSelectdepartment()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;" ng-if="modelData.allotTypeName=='调拨到部门'">
+      <div class="col col-40" style="padding: 10px"><span style="color:white;">*</span>调拨后部门：</div>
+      <div class="col col-50 col-center text-right">
+        <input type="text" style="width:90%;margin-left: 15%"class="text-right" placeholder=" 请选择调拨后部门" ng-model="modelData.allotOfficeName" />
+      </div>
+      <div class="col col-75 col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;margin-left:5%;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+    <div class="item item-input" ng-if="modelData.allotTypeName=='调拨到新单位'">
+      <div class="input-label" style="font-size: 14px;width: auto;color: black">新单位</div>
+      <input type="text" ng-model="modelData.allotCompanyName" class="text-right">
+    </div>
+    <div class="item item-input">
+      <div class="input-label" style="font-size: 14px;width: auto;color: black">备注
+      </div>
+      <input type="text" ng-model="modelData.remarks" class="text-right" placeholder="请输入备注">
+    </div>
+    <!--选择审批人-->
+
+    <div class="row row-no-padding light-bg" ng-click="selectApply()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;" ng-if="modelData.allotTypeName=='调拨到部门'&& ApprovalType=='0'&&(step==''||step=='0'||step=='1')">
+      <div class="col col-40" style="padding: 10px"><span style="color:white;">*</span>审批人：</div>
+      <div class="col col-50 col-center text-right">
+        <input type="text" style="width:90%;margin-left: 15%"class="text-right" placeholder=" 请选择审批人" ng-model="approval.refName" />
+      </div>
+      <div class="col col-75 col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;margin-left:5%;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+    <!--子表-->
+    <div>
+      <div class="light-bg" ng-repeat="item in items" type="item-text-wrap">
+        <div class="row" style="margin: 0;padding: 0;background-color:#F5F5F5;">
+          <div class="col col-33 col-center font-small"
+               style="color: #938E99;font-weight: bold;">调拨资产{{item.detailId}}
+          </div>
+          <div class="col col-66 text-right col-center" ng-if="step=='0'">
+            <i style=" font-size: 14px;color: #0072ff;padding-right: 10px"
+               ng-click="showConfirm(item.detailId)">删除</i>
+          </div>
+        </div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">资产分类：</div>
+          <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                    style="width: 90%;background-color: white" disabled="disabled"
+                                                    placeholder="资产分类"
+                                                    ng-model="item.sortName"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">资产名称：</div>
+          <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                    style="width: 90%;background-color: white" disabled="disabled"
+                                                    placeholder="资产名称"
+                                                    ng-model="item.assetName"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">品牌：</div>
+          <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                    style="width: 90%;background-color: white" disabled="disabled"
+                                                    placeholder="品牌"
+                                                    ng-model="item.brand"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">型号：</div>
+          <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                    style="width: 90%;background-color: white" disabled="disabled"
+                                                    placeholder="型号"
+                                                    ng-model="item.version"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">单价：</div>
+          <div class="col col-66 col-center"><input type="number" class="text-right number"
+                                                    style="width: 90%;background-color: white"
+                                                    ng-blur="changeNumber(item.detailId)" placeholder="单价"
+                                                    ng-model="item.unitPrice"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">计量单位：</div>
+          <div class="col col-66 col-center"><input type="text" class="text-right number"
+                                                    style="width: 90%;background-color: white" placeholder="计量单位"
+                                                    ng-model="item.unit"></div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center padding-top padding-bottom erp-icon-add light-bg" ng-if="step=='0'"
+         style="border-bottom:1px solid #ddd;color: #0072ff"
+         ng-click="goAdd()">
+      <span>添加资产</span>
+    </div>
+    <div ng-if="modelData.allotTypeName=='调拨到部门'">
+      <button class="button button-block" ng-if="stepType==''"
+              style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: rgb(75,141,250);color: white"
+              ng-click="toSubmit()">提交
+      </button>
+    </div>
+    <div ng-if="modelData.allotTypeName=='调拨到新单位'">
+      <button class="button button-block" ng-if="stepType==''"
+              style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: rgb(75,141,250);color: white"
+              ng-click="toSubmit()">调拨
+      </button>
+    </div>
+    <div ng-if="modelData.allotTypeName=='捐献'">
+      <button class="button button-block" ng-if="stepType==''"
+              style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: rgb(75,141,250);color: white"
+              ng-click="toSubmit()">捐献
+      </button>
+    </div>
+  </ion-content>
+
+  <div class="rrs-product-orderATP-ckAll tabs tabs-icon-left  row row-no-padding text-center no-margin"
+       ng-if="stepType=='Approve'"
+       style="color: #4d4d4d;background-image: linear-gradient(0deg, #eeeeee, #eeeeee 50%, transparent 50%);">
+    <a class="tab-item col col-33" ng-click="goApproval()">
+      <i class="icon asset-icon-approval"></i>
+      {{step=='2'?'确认':"同意"}}
+    </a>
+    <a class="tab-item col col-33" ng-click="refuseBill()" ng-if="step==''||step=='0'||step=='1'">
+      <i class="icon asset-icon-refuse"></i>
+      拒绝
+    </a>
+  </div>
+</ion-view>

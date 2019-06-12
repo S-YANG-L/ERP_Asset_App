@@ -1,0 +1,47 @@
+!--消息-->
+<ion-view cache-view="true" view-title="借用">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <!--数据区域-->
+  <ion-content>
+    <!--咖啡-->
+    <div style="text-align: center;padding-top: 25%;color: rgb(173,173,173)" ng-if="isCheck==true">
+      <div class="erp-icon-coffee_1" style="font-size: 50px"></div>
+      <span>暂无待审批单据~~~</span>
+    </div>
+    <div ng-if="isCheck==false" class="item item-input-inset" style="padding: 0px;">
+      <label class="item-input-wrapper">
+        <i class="erp-icon-search" style="color: #AAAAAA;"></i>
+        <input type="search" placeholder="请输入申请人姓名" ng-model="modelData.searchContent"  ng-change="goSearchContent()">
+      </label>
+    </div>
+    <!--<ion-scroll direction="y" style="position: absolute;top: 50px!important;bottom: 0;left: 0;right: 0;">-->
+    <!--下拉刷新-->
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+    <!--数据列表-->
+    <ion-list class="has-tabs-top" style="">
+      <div ng-repeat="todoItem in todoList"
+           ng-click="goApprovalDetail(todoItem.bizKey,todoItem.billtypeCode,todoItem)">
+
+        <div class="row row-no-padding padding-horizontal no-margin">
+          <div class="col-center font-xsmall" style="width: 40px;">
+          </div>
+          <div style="width: 88%" class=" font-small ">
+            <div class="row row-no-padding">
+              <div class="col col-30">{{todoItem.applicantName}}</div>
+              <div class="col text-right" style="color: #AAAAAA;">{{todoItem.createDate}}</div>
+            </div>
+            <div class="row row-no-padding" style="color: #FE943E;">{{todoItem.content}}</div>
+          </div>
+
+        </div>
+        <div class="line"></div>
+      </div>
+    </ion-list>
+
+    <!--上拉加载-->
+    <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+    <!--</ion-scroll>-->
+  </ion-content>
+</ion-view>

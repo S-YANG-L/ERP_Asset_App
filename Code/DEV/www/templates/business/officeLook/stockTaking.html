@@ -1,0 +1,56 @@
+<ion-view view-title="盘点">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-block button-light icon-small asset-icon-back"
+              style="margin:0px; font-size: 25px;color: white" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <!--数据区域-->
+  <ion-content style="background-color:#f2f3f5;">
+    <ion-list class="has-tabs-top">
+      <div ng-repeat="item1 in assetCardList1 |filter:searchContent"
+           style="margin:0px 0px 0px 0px;background-color: #ffffff;border-radius: 3px;">
+        <div class="line" style="background: #ddd;"></div>
+        <div class="row row-no-padding padding-horizontal no-margin">
+          <div style="width: 100%" class=" font-small ">
+            <!--状态下面的线-->
+            <div class="row row-no-padding" style="border-bottom: solid 1px #dedfe0;margin:0px;">
+              <div class="col col-30"
+                   style="line-height: 15px;height: 18px;border-radius: 5px;margin: 10px 10px 5px 5px;padding-top:1px;text-align: center;color: #fff;float: left;
+                             background-color:#4b8dfa;">
+                状态：<span
+                style="color:{{item1.assetStatus=='0'?'#white':(item1.assetStatus=='1'?'#white':(item1.assetStatus=='2'?'#white':'#white'))}}">
+                {{item1.assetStatus=='0'?'未盘点':(item1.assetStatus=='1'?'已盘点':(item1.assetStatus=='2'?'盘亏':'盘亏'))}}
+              </span>
+              </div>
+              <div class="col text-right" style="padding: 10px 5px 5px 5px;color: #FE943E">
+                {{item1.buyDate.substr(0,10)}}
+              </div>
+            </div>
+            <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;">
+              <div class="col col-50">资产编码：{{item1.assetCode}}</div>
+              <div class="col col-50">资产名称：{{item1.assetName}}</div>
+            </div>
+            <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;">
+              <div class="col col-50">供货商：{{item1.supplier}}</div>
+              <div class="col col-50">存放地点：{{item1.storagePlace}}</div>
+            </div>
+            <div class="row  text-right " style="margin: 0px 0px;size:2px">
+              <button class="button  "
+                      style="width: 80px;height:5px;background-color: white;color: rgb(75,141,250);border: 1px rgb(75,141,250) solid;border-radius: 15px;margin-left: 35px"
+                      ng-click="inventory()">盘点
+              </button>
+              <button class="button"
+                      style="width: 80px;height:5px;background-color: white;color: rgb(75,141,250);border: 1px rgb(75,141,250) solid;border-radius: 15px;margin-left: 75px"
+                      ng-click="losses(item1.assetCode)">盘亏
+              </button>
+              <!--</div>-->
+            </div>
+          </div>
+          <!--<div class="line" style="background: #2e9e3b;"></div>-->
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

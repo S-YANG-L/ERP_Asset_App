@@ -1,0 +1,27 @@
+<ion-view view-title="选择人员" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-light icon-small asset-icon-back"style="font-size: 25px;color: white;width: 50px;padding-right: 30px"  ng-click="goBack()"></button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="no-padding" overflow-scroll="true">
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+        <input type="search" placeholder="请输人员姓名" ng-model="searchContent">
+      </label>
+    </div>
+    <div style="padding-left: 15px;">
+      <div class="row row-no-padding no-margin" style="line-height: 30px;vertical-align: middle;" ng-repeat="item in btypeInfoList | filter:searchContent" ng-click="selectPerson(item)">
+        <div class="col" style="border-bottom: solid 1px #eeeeee;">
+          <div class="padding-top">
+            {{item.userName}}&nbsp;
+            <span class="text-right" style="font-size: 12px;color: #0000fe">
+            {{item.company}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

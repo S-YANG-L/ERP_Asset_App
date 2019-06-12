@@ -1,0 +1,65 @@
+<ion-view title="资产调拨" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light asset-icon-add"
+              style="margin:0px;font-size: 14px;color: white" ng-click="goAdd()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content style="background:white">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh(true)" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+        <input type="search" placeholder="输入关键字查询" ng-model="searchContent">
+      </label>
+    </div>
+    <!--数据列表-->
+    <ion-list class="has-tabs-top">
+      <div ng-repeat="item in item1|filter:searchContent">
+        <div class="row row-no-padding font-small padding-horizontal no-margin" style="margin-bottom: 5px"
+             ng-click="goDetail(item)">
+          <div class=" font-xsmall" style="width: 40px;padding-top: 32px">
+            <div
+              style="padding-left:4px;padding-top:7px;color: #fff;width: 32px; height: 32px;-moz-border-radius: 16px;
+                -webkit-border-radius: 16px;border-radius: 16px;
+              background-color:#9B80B5">
+              调拨
+            </div>
+          </div>
+          <div style="width: 88%" class="font-small">
+            <div class="row row-no-padding" style="margin-bottom: 5px">
+              <div class="col col-30">{{item.operatorName}}
+              </div>
+              <div class="col text-right" style="color: #AAAAAA;">{{item.createDate.substr(0,10)}}</div>
+            </div>
+            <div class="row row-no-padding" style="margin: 0px 0px 3px 0px;color: #FE943E;">
+              <div class="col col-60">
+                单号：{{item.allotCode}}
+              </div>
+              <div class="col col-50" style="padding-left: 12px">
+                使用部门：{{item.officeName}}
+              </div>
+            </div>
+            <div class="row row-no-padding" style="margin: 0px 0px 3px 0px;color: #FE943E;">
+              <div class="col col-50">
+                调拨类型：{{item.allotTypeName}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line"></div>
+      </div>
+    </ion-list>
+    <div style="text-align: center;padding-top: 25%;color: rgb(173,173,173)" ng-hide="blank">
+      <div class="asset-icon-coffee_1" style="font-size: 50px"></div>
+      <span>暂无调拨数据~~</span>
+    </div>
+    <!--上拉加载-->
+    <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,120 @@
+<ion-view  view-title="退库单" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back" style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content class="" style="height: 85%">
+    <!--下拉刷新-->
+    <!--<ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="rrs-icon-pull-down"></ion-refresher>-->
+
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:red;">*</span>退库人：</div>
+        <div class="col col-30 col-center text-right">
+          <input type="text" class="text-right" style="width:90%;margin-left:80%" ng-model="modelData.retireName"></input>
+        </div>
+      </div>
+
+      <div class="row row-no-padding light-bg"
+           style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:red;">*</span>退库日期：</div>
+        <div class="col col-30 col-center text-right">
+          <div class="button-clear text-right" style="width: 130%;color: #111;font-size: 14px;margin-left: 40%"
+               ng-model="modelData.receiverDate">{{modelData.receiverDate|date:'yyyy-MM-dd'}}
+          </div>
+        </div>
+      </div>
+
+      <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:red;">*</span>部门名称：</div>
+        <div class="col col-30 col-center text-right">
+          <input type="text" style="width:90%;margin-left:80%"class="text-right" placeholder="请选择使用部门" ng-model="modelData.returnOfficeName" />
+        </div>
+      </div>
+
+    <div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:white;">*</span>备注信息：</div>
+      <!--<div class="input-label" style="font-size: 14px;width: auto;color: black"><span style="color:white;">*</span>备注信息：</div>-->
+      <div class="col col-30 col-center text-right">
+      <input type="text"  style="width:90%;margin-left:80%" ng-model="modelData.remarks" class="text-right" placeholder="请输入备注">
+    </div>
+    </div>
+
+    <div class="row row-no-padding light-bg" ng-click="selectApply()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+      <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:white;">*</span>审批人：</div>
+      <div class="col col-30 col-center text-right">
+        <input type="text" style="width:90%;margin-left:80%"class="text-right" placeholder="请选择审批人" ng-model="approval.refName" />
+      </div>
+      <div class="col col-25 text-right col-center">
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+      </div>
+    </div>
+
+
+
+      <!--子表-->
+      <div>
+          <div class="row row-no-padding no-margin" style="line-height: 10px;vertical-align: middle;"
+          ng-repeat="item in items">
+          <div class="col"
+          style="width:100%;background-color:#F5F5F5;border-radius: 15px;margin: 10px;padding:15px;display: inline-block">
+        <div class="row" style="margin: 0;padding: 0;background-color:#F5F5F5;">
+          <div class="col col-33 col-center font-small"
+               style="color: #938E99;">资产{{item.detailId}}
+          </div>
+          <div class="col col-66 text-right col-center">
+            <i style=" font-size: 14px;color: #0072ff;padding-right: 10px"
+               ng-click="showConfirm(item.detailId)">删除</i>
+          </div>
+        </div>
+            <div class="line" style="background: #ddd;"></div>
+        <div class="row row-no-padding padding-horizontal no-margin">
+              <div style="width: 100%" class=" font-small " >
+                <div class="row row-no-padding" style="border-bottom: solid 1px #dedfe0;margin:0px;">
+                  <div class="col col-30"
+                       style="line-height: 15px;height: 18px;border-radius: 5px;margin: 10px 10px 5px 5px;padding-top:1px;text-align: center;color: #fff;float: left;
+                             background-color:#4b8dfa;">
+                    {{item.assetName}}
+                  </div>
+                  <div class="col text-right" style="padding: 10px 5px 5px 5px;color: rgb(255,126,0)">
+                    {{item.createDate.substr(0,10)}}
+                  </div>
+                </div>
+                <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;padding-top: 3%">
+                  <div class="col col-60">资产编码：{{item.assetCode}}</div>
+                  <div class="col col-60">版本：{{item.brand}}</div>
+                </div>
+                <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;padding-top: 3%">
+                  <div class="col col-60">资产类别：{{item.sortName}}</div>
+                  <div class="col col-60">型号：{{item.version}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line" style="background: #ddd;"></div>
+        </div>
+
+        <div class="text-center  padding-bottom asset-icon-add light-bg"
+             style="border-bottom:1px solid #ddd;color: #0072ff;padding-top: -15px;margin-top: 10px"
+             ng-click="getreturnInfoDtl()">
+          <span>添加资产</span>
+        </div>
+    <!--<div class="text-center  padding-bottom asset-icon-add light-bg"-->
+         <!--style="border-bottom:1px solid #ddd;color: #0072ff;padding-top: -15px;margin-top: 10px"-->
+         <!--ng-click="getwareHouseinfo()">-->
+      <!--<span>添加办公用品</span>-->
+    <!--</div>-->
+    <div class="line" style="background: #ddd;"></div>
+    <div>
+      <button class="button button-block"
+              style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: rgb(75,141,250);color: white"
+              ng-click="toSubmit()">提交
+      </button>
+    </div>
+    <!--上拉加载-->
+    <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

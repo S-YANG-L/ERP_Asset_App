@@ -1,0 +1,43 @@
+<ion-view cache-view="false" view-title="维修信息登记">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: white;font-size: 25px;width: 50px;" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light" style="margin:0px;font-size: 14px;color: white"
+              ng-click="goAdd()">新增
+      </button>
+    </ion-nav-buttons>
+
+    <!--数据区域-->
+    <ion-content class="no-padding" style="background-color: white" overflow-scroll="true">
+      <div>
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+            <input type="search" placeholder="输入关键字查询" ng-model="searchContent">
+          </label>
+        </div>
+        <button class="button-full asset-icon-filter"
+                style="width: 100%;height: 30px;border:none;padding-left: 6px;background-color: #e5e5e5 "
+                ng-click="goScreen()">筛选
+        </button>
+      </div>
+      <!--<ion-scroll direction="y" style="position: absolute;top: 50px!important;bottom: 0;left: 0;right: 0;">-->
+      <!--下拉刷新-->
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+      <!--数据列表-->
+      <div class="row row-no-padding" style="color: #000;margin:6px 0 0 10px ">
+
+      </div>
+      <div class="line"></div>
+      <ion-list class="has-tabs-top" style="">
+
+      </ion-list>
+      <!--上拉加载-->
+      <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+      <!--</ion-scroll>-->
+    </ion-content>
+</ion-view>

@@ -1,0 +1,137 @@
+<ion-view title="调拨单筛选" cache-view="false">
+
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <!--开票明细报表筛选条件-->
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="font-size: 25px;color:white;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light" style="margin:0px;font-size: 14px;color: white"
+              ng-click="goClear()">清空
+      </button>
+    </ion-nav-buttons>
+    <ion-content class="content-bg">
+
+      <div class="row row-no-padding light-bg"
+           style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">资产单号：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%" class="text-right " placeholder=""
+                 ng-model="modelData.assetName">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg"
+           style="margin:10px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-33" style="padding: 10px">调拨人：</div>
+        <div class="col col-67 col-center text-right">
+          <input type="text" style="width:90%;margin-right: 20%" class="text-right " placeholder=""
+                 ng-model="modelData.searchContent">
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg"
+           style="margin:10px 0px 0px 0px;border-top: solid 1px #ddd;border-bottom: solid 1px #f0f0f0;"
+           ng-click="addDateRange()">
+        <div class="col col-33" style="padding: 10px">调拨日期范围：</div>
+        <div class="col col-57 col-center text-right">
+          <div data-tap-disabled="true">
+            <select style="background-color: white;border: none;padding-left: 3px; width: 100%;
+            appearance:none;-moz-appearance:none;-webkit-appearance:none;color:black;font-size: 14px"
+                    ng-change="rangeClick(modelData.range)" ng-model="modelData.range"
+                    ng-options="x.id as x.range for x in dateRange"></select>
+          </div>
+        </div>
+        <div class="col col-10 text-center col-center">
+          <i class="icon icon-right erp-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>
+        </div>
+      </div>
+
+      <div class="row row-no-padding light-bg" style="margin:0px;padding: 0px;border-top: 5px solid #ddd"></div>
+      <div class="row row-no-padding light-bg" style="padding: 0px;border-bottom: solid 1px #ddd;">
+        <div class="col col-40">
+          <button class="button-clear text-center button-middle "
+                  style="padding-top:3px;width: 100%;color: #111;font-size: 14px;" ng-model="modelData.beginDate"
+                  ng-click="openDatePicker(modelData.beginDate,'beginDate')">
+            {{modelData.beginDateTime|date:'yyyy-MM-dd'}}
+          </button>
+        </div>
+        <div class="col col-20 text-center" style="padding: 10px;background-color: white">至</div>
+        <div class="col col-40">
+          <button class="button-clear text-center button-middle "
+                  style="padding-top:3px;width: 100%;color: #111;font-size: 14px;" ng-model="modelData.endDate"
+                  ng-click="openDatePicker(modelData.endDate,'endDate')">{{modelData.endDateTime|date:'yyyy-MM-dd'}}
+          </button>
+        </div>
+      </div>
+      <!--<div class="row row-no-padding light-bg"-->
+      <!--style="margin:10px 0px 0px 0px;border-top: solid 1px #ddd;border-bottom: solid 1px #f0f0f0;"-->
+      <!--ng-click="addDateRange()">-->
+      <!--<div class="col col-33" style="padding: 10px">调入日期范围：</div>-->
+      <!--<div class="col col-57 col-center text-right">-->
+      <!--<div data-tap-disabled="true">-->
+      <!--<select style="background-color: white;border: none;padding-left: 3px; width: 100%;-->
+      <!--appearance:none;-moz-appearance:none;-webkit-appearance:none;color:black;font-size: 14px"-->
+      <!--ng-change="rangeClick(modelData.range)" ng-model="modelData.range"-->
+      <!--ng-options="x.id as x.range for x in dateRange"></select>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col col-10 text-center col-center">-->
+      <!--<i class="icon icon-right erp-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="row row-no-padding light-bg" style="margin:0px;padding: 0px;border-top: 5px solid #ddd"></div>-->
+      <!--<div class="row row-no-padding light-bg" style="padding: 0px;border-bottom: solid 1px #ddd;">-->
+      <!--<div class="col col-40">-->
+      <!--<button class="button-clear text-center button-middle "-->
+      <!--style="padding-top:3px;width: 100%;color: #111;font-size: 14px;" ng-model="modelData.beginDate"-->
+      <!--ng-click="openDatePicker(modelData.beginDate,'beginDate')">-->
+      <!--{{modelData.beginDateTime|date:'yyyy-MM-dd'}}-->
+      <!--</button>-->
+      <!--</div>-->
+      <!--<div class="col col-20 text-center" style="padding: 10px;background-color: white">至</div>-->
+      <!--<div class="col col-40">-->
+      <!--<button class="button-clear text-center button-middle "-->
+      <!--style="padding-top:3px;width: 100%;color: #111;font-size: 14px;" ng-model="modelData.endDate"-->
+      <!--ng-click="openDatePicker(modelData.endDate,'endDate')">{{modelData.endDateTime|date:'yyyy-MM-dd'}}-->
+      <!--</button>-->
+      <!--</div>-->
+      <!--</div>-->
+      <div class="row row-no-padding light-bg" style="border-top:1px solid #ddd;border-bottom:1px solid #ddd;">
+        <div class="col col-33" style="padding: 10px">单据内容：</div>
+        <div class="col col-66 col-center"><textarea type="text" style="width: 100%;height: 80px;padding-top: 10px;"
+                                                     placeholder="可根据单据具体内容模糊搜索"
+                                                     ng-model="modelData.requestContent"></textarea></div>
+      </div>
+      <button class="button button-block"
+              style="width: 80%;margin-left: 32px; margin-top: 30px;background-color:rgb(75,141,250);color: white"
+              ng-click="toSubmit()">确定
+      </button>
+    </ion-content>
+    <div ng-click="hidden()" ng-if="myModal" class="ng-animate content has-header ionic-pseudo"
+         style="width: 100%;height:100%;background-color:#000000; background-color:rgba(0,0,0,0.5);">
+
+    </div>
+    <div class="" scroll="true" overflow-scroll="true" ng-if="myModal"
+         style="position:absolute;bottom:0px;width: 100%;text-align: center;background-color: #fff;">
+      <div ng-repeat="item in itemList" class="row row-no-padding light-bg">
+        <div class="col col-33 col-center" style="padding:0px 5px;" ng-repeat="colItem in item" ng-click="add(colItem)">
+          <div ng-if="colItem.name!=''"
+               style="color:{{colItem.isRoot==false? '#333':'#fff'}}; border-radius:3px;border: solid 1px #eeeeee;background-color:{{colItem.isRoot==false ? '#eeeeee' : '#387ef5'}};padding:8px 0px;text-align:center;vertical-align: middle;">
+            <span style="font-size: 12px; padding: 0px 5px;">{{colItem.name}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row no-margin row-no-padding" style="">
+
+        <!--<button class="col col-50 button button-clear button-full button-block button-positive" style="font-size: 15px;background-color: #eeeeee;color:#333;margin-bottom: 0px" ng-click="goReset()">-->
+        <!--重置-->
+        <!--</button>-->
+        <!--<button class="col col-50 button button-full button-positive" style="margin-bottom: 0px; font-size: 15px" ng-click="toSure()">-->
+        <!--确定-->
+        <!--</button>-->
+      </div>
+    </div>
+  </ion-nav-bar>
+</ion-view>
+

@@ -1,0 +1,25 @@
+<ion-view cache-view="true" view-title="待办业务">
+
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-clear button-light icon-small asset-icon-menu "
+              style="color: white;font-size: 25px;"></button>
+    </ion-nav-buttons>
+
+  <ion-content>
+    <ion-tabs delegate-handle="tab-message"
+              class="tabs-striped tabs-top tabs-background-light tabs-color-positive ">
+      <ion-tab title="待办业务({{todoCount}})" href="#/app/home/remind/todo_list">
+        <ion-nav-view name="app-home-remind-todo"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="已办业务" href="#/app/home/remind/done_list">
+        <ion-nav-view name="app-home-remind-done"></ion-nav-view>
+      </ion-tab>
+
+      <ion-tab title="我的申请" href="#/app/home/remind/apply_list">
+        <ion-nav-view name="app-home-remind-apply"></ion-nav-view>
+      </ion-tab>
+    </ion-tabs>
+  </ion-content>
+</ion-view>

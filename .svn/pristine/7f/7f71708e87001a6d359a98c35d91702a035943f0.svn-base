@@ -1,0 +1,64 @@
+<ion-view view-title="设置" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue"align-title="center">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-light icon-small asset-icon-back" style="font-size: 25px;color: white;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+  </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+    <button class="button button-clear button-light" style="margin-right:8px;font-size: 16px;color: white;" ng-click="save()">保存</button>
+  </ion-nav-buttons>
+    <style>
+      .gray{
+        color: grey;
+      }
+    </style>
+  <ion-content class="content-bg" style="font-size: 13px;">
+    <!--<div class="row row-no-padding text-left" style="margin:5px 0px 0px 0px;padding-left: 10px;font-size: 13px;margin-bottom: 10px;">-->
+      <!--设备型号：-->
+    <!--</div>-->
+    <!--<div class="row row-no-padding light-bg no-margin" style="height:40px;">-->
+      <!--<div class="col col-50" style="margin: 10px 0px 0px 20px;">-->
+        <!--<input type="radio" name="equipmentType" id="equipAndroid" ng-model="modelData.equipmentType" value="Android" ng-disabled="disable" style="margin-right: 1px;"/><label ng-class="{gray:disable}" for="equipAndroid">Android</label>-->
+      <!--</div>-->
+      <!--<div class="col col-50" style="margin: 10px 0px 0px 10px;">-->
+        <!--<input type="radio" name="equipmentType" id="equipIOS" ng-model="modelData.equipmentType" value="IOS" ng-disabled="!disable" style="margin-right: 1px;"/><label ng-class="{gray:!disable}" for="equipIOS">IOS</label>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="row row-no-padding text-left" style="margin:8px 0px 0px 0px;padding-left: 10px;font-size: 13px;margin-bottom: 10px;">
+      推送设置：
+    </div>
+    <div class="row row-no-padding no-margin light-bg" style="height:40px;">
+      <div class="col col-50" style="margin: 10px 0px 0px 20px;">
+        <input type="checkbox" name="pushType" id="checkWechat" ng-model="modelData.pushType.weChat" ng-true-value="true" ng-false-value="false" style="margin-right: 1px;"/><label for="checkWechat">微信推送</label>
+      </div>
+      <div class="col col-50" style="margin: 10px 0px 0px 10px;">
+        <input type="checkbox" name="pushType" id="checkJpush" ng-model="modelData.pushType.Jpush" ng-true-value="true" ng-false-value="false" style="margin-right: 1px;"/><label for="checkJpush">极光推送</label>
+      </div>
+    </div>
+    <div class="row row-no-padding text-left" style="margin:8px 0px 0px 0px;padding-left: 10px;font-size: 13px;margin-bottom: 10px;">
+      单据类通知：
+    </div>
+    <div class="row row-no-padding no-margin light-bg" style="height:40px;">
+      <div class="col col-50" style="margin: 13px 0px 0px 20px;">
+        <input type="radio" name="billNotice" id="radioBillNotice1" ng-model="modelData.billNotice" value="1" style="margin-right: 1px;"/><label for="radioBillNotice1">实时推送</label>
+      </div>
+    </div>
+    <div class="row row-no-padding no-margin light-bg" style="height:40px;">
+      <div class="col col-50" style="margin: 7px 0px 0px 20px;">
+        <input type="radio" name="billNotice" id="radioBillNotice2" ng-model="modelData.billNotice" value="2" style="margin-right: 1px;"/><label for="radioBillNotice2">延时推送（半个小时）</label>
+      </div>
+    </div>
+    <div class="row row-no-padding text-left" style="margin:8px 0px 0px 0px;padding-left: 10px;font-size: 13px;margin-bottom: 10px;">
+      消息类通知：
+    </div>
+    <div class="row row-no-padding no-margin light-bg" style="height:40px;">
+      <div class="col col-50" style="margin: 13px 0px 0px 20px;">
+        <input type="radio" name="newsNotice" id="radioNewsNotice1"  ng-model="modelData.newsNotice" value="1" style="margin-right: 1px;"/><label for="radioNewsNotice1">实时推送</label>
+      </div>
+    </div>
+    <div class="row row-no-padding no-margin light-bg" style="height:40px;">
+      <div class="col col-50" style="margin: 7px 0px 0px 20px;">
+        <input type="radio" name="newsNotice"id="radioNewsNotice2"  ng-model="modelData.newsNotice" value="2" style="margin-right: 1px;"/><label for="radioNewsNotice2">延时推送（半个小时）</label>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

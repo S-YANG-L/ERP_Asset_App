@@ -1,0 +1,50 @@
+<ion-view view-title="资产盘点" style="background-color: white">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-block button-light icon-small asset-icon-back"
+              style="margin:0px; font-size: 25px;color: white" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <!--数据区域-->
+  <ion-content style="background-color:#f2f3f5;">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+    <!--数据列表-->
+    <div class="item item-input-inset" style="padding: 0px;">
+      <label class="item-input-wrapper">
+        <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+        <input type="search" placeholder="请输入盘点名称或盘点编号" ng-model="searchContent" ng-change="goSearchContent()"
+               style="width:100%;">
+      </label>
+    </div>
+    <ion-list class="has-tabs-top">
+      <div ng-repeat="item in assetCardList |filter:searchContent"
+           style="margin:0px 0px 0px 0px;background-color: #ffffff;border-radius: 3px;">
+        <div class="line" style="background: #ddd;"></div>
+        <div class="row row-no-padding padding-horizontal no-margin">
+          <div style="width: 100%" class=" font-small " ng-click="goDetail(item)">
+            <div class="row row-no-padding" style="border-bottom: solid 1px #dedfe0;margin:0px;">
+              <div class="col col-30"
+                   style="line-height: 15px;height: 18px;border-radius: 5px;margin: 10px 10px 5px 5px;padding-top:1px;text-align: center;color: #fff;float: left;
+                             background-color:#4b8dfa;">{{item.chackName}}
+              </div>
+              <div class="col text-right" style="padding: 10px 5px 5px 5px;color: #FE943E">
+                {{item.createDate.substr(0,10)}}
+              </div>
+            </div>
+            <div class="row row-no-padding" style="margin: 15px 0px;color: #434e4a;">
+              <div class="col text-left">盘点编码 ：{{item.chackCode}}</div>
+            </div>
+            <div class="row row-no-padding" style="margin: 15px 0px;color: #434e4a;">
+              <div class="col text-left">创建人：{{item.handleName}}</div>
+            </div>
+          <!--<div class="line" style="background: #ddd;"></div>-->
+          </div>
+        </div>
+        <div class="line" style="background: #ddd;"></div>
+      </div>
+    </ion-list>
+    <!--上拉加载-->
+    <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+

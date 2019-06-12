@@ -1,0 +1,209 @@
+<ion-view view-title="办公用品详情" cache-view="true">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-block button-light icon-small asset-icon-back" style="margin:0px; font-size: 25px;color: white" ng-click="goBack()"></button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <div class="light-bg" style="font-family: SimHei;">
+      <div class="light-bg padding-top">
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class=" text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">入库日期：</div>
+          </div>
+          <div class=" text-left">
+            <div class="font-small" style="">{{assetDataList.orderDate}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class=" text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">仓库名称：</div>
+          </div>
+          <div class=" text-left">
+            <div class="font-small" style="">{{assetDataList.whName}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class=" text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">经办人：</div>
+          </div>
+          <div class=" text-left">
+            <div class="font-small" style="color: #7E8793">{{assetDataList.psnName}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class=" text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">描述：</div>
+          </div>
+          <div class=" text-left">
+            <div class="font-small bold" style="color: #7E8793">{{assetDataList.remarks}}</div>
+          </div>
+        </div>
+        <div class="line"></div>
+      </div>
+<!--明细-->
+      <div ng-repeat="item in assetCardData">
+        <div class="row row-center row-no-padding"style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small icon {{
+                $index=='0'?'asset-icon-number':(
+                $index=='1'?'asset-icon-number2':(
+                $index=='2'?'asset-icon-number3':(
+                $index=='3'?'asset-icon-number4':(
+                $index=='4'?'asset-icon-number5':(
+                $index=='5'?'asset-icon-number6':(
+                $index=='6'?'asset-icon-number7':(
+                $index=='7'?'asset-icon-number8':(
+                $index=='8'?'asset-icon-number9':(
+                $index=='9'?'asset-icon-number10':
+               'asset-icon-number'))) ))))))}}" style="padding-left: 5px;font-size: 15px;color: blue"></div>
+          </div>
+          <div class="col">
+            <div class="font-small" style="color: #7E8793;padding-left: 3px;font-weight: bold">办公用品</办公用品>明细</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">办公用品分类：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item.sortName}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">用品名称：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item.articlesName}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">品牌：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item.brand}}</div>
+          </div>
+        </div>
+
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">单位：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item.unit}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">规格型号：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item.version}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">数量：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item.qty}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">单价：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item.price}}</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!--明细-->
+      <div ng-repeat="item1 in assetCardData1">
+        <div class="row row-center row-no-padding"style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small icon {{
+                $index=='0'?'asset-icon-number':(
+                $index=='1'?'asset-icon-number2':(
+                $index=='2'?'asset-icon-number3':(
+                $index=='3'?'asset-icon-number4':(
+                $index=='4'?'asset-icon-number5':(
+                $index=='5'?'asset-icon-number6':(
+                $index=='6'?'asset-icon-number7':(
+                $index=='7'?'asset-icon-number8':(
+                $index=='8'?'asset-icon-number9':(
+                $index=='9'?'asset-icon-number10':
+               'asset-icon-number'))) ))))))}}" style="padding-left: 5px;font-size: 15px;color: blue"></div>
+          </div>
+          <div class="col">
+            <div class="font-small" style="color: #7E8793;padding-left: 3px;font-weight: bold">采购单</采购单>明细</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">办公用品分类：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item1.sortName}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">用品名称：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item1.articlesName}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">品牌：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item1.brand}}</div>
+          </div>
+        </div>
+
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">单位：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item1.unit}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">规格型号：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item1.version}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">数量：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item1.qty}}</div>
+          </div>
+        </div>
+        <div class="row row-center row-no-padding" style="margin: 2px 0px">
+          <div class="text-left">
+            <div class="font-small" style="padding-left: 15px;color: #7E8793">单价：</div>
+          </div>
+          <div class="text-left">
+            <div class="font-small" style="color: #7E8793">{{item1.price}}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
+

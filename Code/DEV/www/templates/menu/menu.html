@@ -1,0 +1,54 @@
+<ion-side-menus>
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-clear"><i class="icon asset-icon-back"></i> Back</ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right">
+    </ion-nav-view>
+  </ion-pane>
+  <ion-side-menu side="left">
+    <ion-content>
+      <ion-list>
+        <ion-item class="item-stable item-avatar item-icon-right" style="background-color: white;height: 90px">
+          <!--<img src="{{headPortraitImg.url}}" style="width: 40px; height: 40px;-moz-border-radius: 20px;-webkit-border-radius: 20px;border-radius: 20px;">-->
+          <img style="margin: 10px" src="img/y.png">
+          <h2 style="margin: 10px">{{user.userName}}</h2>
+          <p>{{user.email}}</p>
+        </ion-item>
+        <ion-item class="item-stable item-icon-left item-icon-right" ng-click="goChangePassword()" style="background-color: white">
+          <i class="icon asset-icon-updatepwd" style="font-size: 25px;left:5px;padding-left: 15px"></i>
+          密码修改
+          <!--<i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>-->
+        </ion-item>
+        <ion-item class=" item-stable item-icon-left item-icon-right" ng-click="checkUpdateInfo()" style="background-color: white">
+          <i class="icon asset-icon-edition" style="font-size: 25px;left:5px;padding-left: 15px"></i>
+          当前版本号{{versionCode}}
+          <!--<i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>-->
+        </ion-item>
+
+      </ion-list>
+      <!--<ion-item nav-clear class="item-stable asset-icon-pushSetting" style="background-color: white;width: 100%;position: absolute;bottom: 0px;left: 0px" ng-click="goBaseData()">-->
+        <!--&nbsp;基础数据-->
+      <!--</ion-item>-->
+      <ion-item nav-clear class="item-stable asset-icon-goOut" style="background-color: white;width: 100%;position: absolute;bottom: 0px;" ng-click="goLogin()">
+        退出登录
+      </ion-item>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
+
+<style>
+  .list .item.item-accordion {
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.09s all linear;
+  }
+  .list .item.item-accordion.ng-hide {
+    line-height: 0px;
+  }
+  .list .item.item-accordion.ng-hide-add,
+  .list .item.item-accordion.ng-hide-remove {
+    display: block !important;
+  }
+</style>
+

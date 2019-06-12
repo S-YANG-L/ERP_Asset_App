@@ -1,0 +1,77 @@
+<ion-view view-title="退库" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-light icon-small asset-icon-back "
+            style="color: white;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-block button-light asset-icon-add"
+            style="margin:0px;font-size: 14px;color: white" ng-click="goRefund()"></button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content style="margin: 0px;padding: 0px">
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+        <input type="search" placeholder="输入关键字查询" ng-model="searchContent">
+      </label>
+      <!--<label class="item item-input-inset" style="border: none">-->
+        <!--<label class="item-input-wrapper">-->
+          <!--<i class="item-input-wrapper" style="color: #AAAAAA;"></i>-->
+          <!--<button class="button button-clear  button-block asset-icon-ecode  button-light"-->
+                  <!--style="color: white;font-size: 20px;width: 50px;padding-left: 10px " ng-click="getFilter()"></button>-->
+        <!--</label>-->
+      <!--</label>-->
+    </div>
+<!--1-->
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh(true)" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+    <ion-list class="has-tabs-top">
+      <div ng-repeat="item in assetCardList| filter:searchContent" ng-click="goDetail(item)">
+        <div class="row row-no-padding font-small padding-horizontal no-margin" style="margin-bottom: 5px"
+             ng-click="goDetail(doneItem)">
+          <div class=" font-xsmall" style="width: 40px;padding-top: 32px">
+            <div
+              style="padding-left:4px;padding-top:7px;color: #fff;width: 32px; height: 32px;-moz-border-radius: 16px;
+                -webkit-border-radius: 16px;border-radius: 16px;
+              background-color:#9B80B5">
+              退库
+            </div>
+          </div>
+          <div style="width: 100%" class="font-small">
+            <div class="row row-no-padding" style="margin-bottom: 5px">
+              <div class="col col-50">{{item.retireName}}
+              </div>
+              <div class="col text-right" style="color: #000000;">{{item.createDate|date:'yyyy-MM-dd'}}</div>
+            </div>
+            <div class="row row-no-padding" style="margin: 0px 0px 3px 0px;color: #FE943E;">
+              <div class="col col-60">
+                部门：{{item.returnOfficeName}}
+              </div>
+              <div class="col col-60" >
+                审批状态：<span
+                style="color:{{item.approvalStatus=='0'?'#FF8F29':(item.approvalStatus=='1'?'#FF8F29':(item.approvalStatus=='2'?'#FF8F29':'#FF8F29'))}}">
+                {{item.approvalStatus=='0'?'撤回':(item.approvalStatus=='1'?'审批中':(item.approvalStatus=='2'?'审批通过':'驳回'))}}
+                </span>
+              </div>
+            </div>
+            <div class="row row-no-padding" style="margin: 0px 0px 3px 0px;color: #FE943E;">
+              <div class="col col-60">
+                备注：{{item.remarks}}
+              </div>
+              <div class="col col-60" style="padding-left: 12px">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="line"></div>
+      </div>
+    </ion-list>
+    <div style="text-align: center;padding-top: 25%;color: rgb(173,173,173)" ng-hide="blank">
+      <div class="asset-icon-coffee_1" style="font-size: 50px"></div>
+      <span>暂无退库记录~~</span>
+    </div>
+    <!--上拉加载-->
+    <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+

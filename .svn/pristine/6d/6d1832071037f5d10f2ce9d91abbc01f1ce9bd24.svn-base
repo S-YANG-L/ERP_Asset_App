@@ -1,0 +1,167 @@
+<ion-view title="新增办公用品入库" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button ng-click="toSubmit()" type="button" class="button button-clear button-light"
+              style="color: #fff;font-size: 14px;font-weight: 400;">保存
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="" style="height: 85%">
+    <div class="list">
+      <div class="row row-no-padding light-bg"
+           style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px;"><span style="color: red">*</span>入库日期：</div>
+        <div class="col col-30 col-center text-right">
+          <div class="button-clear text-right" style="width: 100%;color: #111;font-size: 14px;margin-left: 80%"
+               ng-model="modelData.applyDate"
+               ng-click="openDatePicker()">{{modelData.applyDate|date:'yyyy-MM-dd'}}
+          </div>
+        </div>
+        <div class="col text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;right: 10px"></i>
+        </div>
+      </div>
+      <!--仓库名称-->
+
+      <div class="row row-no-padding light-bg" ng-click="choicewarhouse()"
+           style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40" style="padding: 10px"><span style="color:red;">*</span>仓库名称：</div>
+        <div class="col col-50 col-center text-right">
+          <input type="text" style="width:90%;margin-left: 15%" class="text-right" placeholder=" 请选择仓库"
+                 ng-model="Warehouse.warehouseName"/>
+        </div>
+        <div class="col col-75 col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;margin-left:5%;color: #c0c0c0;"></i>
+        </div>
+      </div>
+
+      <div class="item item-input" ng-click="goSelectAssetType()">
+        <div class="input-label" style="font-size: 14px;width: auto;color: black"><span style="color:white;">*</span>经办人
+        </div>
+        <input type="text" ng-model="modelData.operator" disabled="true" style="background-color: white"
+               class="text-right" placeholder="请选择经办人">
+      </div>
+      <div class="item item-input">
+        <div class="input-label" style="font-size: 14px;width: auto;color: black"><span style="color:white;">*</span>备注
+        </div>
+        <input type="text" ng-model="modelData.content" class="text-right" placeholder="请输入备注">
+      </div>
+      <!--子表1-->
+      <div class="light-bg" ng-repeat="item1 in items1" type="item-text-wrap">
+        <div class="row" style="margin: 0;padding: 0;background-color:#F5F5F5;">
+          <div class="col col-33 col-center font-small"
+               style="color: #938E99;">采购用品{{item1.detailId1}}
+          </div>
+          <div class="col col-66 text-right col-center">
+            <i style=" font-size: 14px;color: #0072ff;padding-right: 10px"
+               ng-click="showConfirm1(item.detailId1)">删除</i>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">用品分类：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="用品分类"
+                                                    ng-model="item1.sortName"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">用品编码：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="用品编码"
+                                                    ng-model="item1.articleCode"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">用品名称：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="用品名称"
+                                                    ng-model="item1.articlesName"></div>
+        </div>
+
+
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">单价：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="单价"
+                                                    ng-model="item1.price"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">数量：</div>
+          <div class="col col-66 col-center"><input type="number" style="background-color:white;width: 100%;"
+                                                    placeholder="数量"
+                                                    ng-model="item1.qty"></div>
+        </div>
+        <div class="line"></div>
+      </div>
+      <div class="text-center  padding-bottom asset-icon-add light-bg"
+           style="border-bottom:1px solid #ddd;color: #0072ff;padding-top: -15px;margin-top: 10px"
+           ng-click="getorderBill()">
+        <span>导入采购</span>
+      </div>
+      <!--子表-->
+      <div class="light-bg" ng-repeat="item in items" type="item-text-wrap">
+        <div class="row" style="margin: 0;padding: 0;background-color:#F5F5F5;">
+          <div class="col col-33 col-center font-small"
+               style="color: #938E99;">办公用品{{item.detailId}}
+          </div>
+          <div class="col col-66 text-right col-center">
+            <i style=" font-size: 14px;color: #0072ff;padding-right: 10px"
+               ng-click="showConfirm(item.detailId)">删除</i>
+          </div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">用品分类：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="用品分类"
+                                                    ng-model="item.sortName"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">用品编码：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="用品编码"
+                                                    ng-model="item.articleCode"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">用品名称：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="用品名称"
+                                                    ng-model="item.articlesName"></div>
+        </div>
+
+
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">单价：</div>
+          <div class="col col-66 col-center"><input type="text" style="background-color:white;width: 100%;"
+                                                    placeholder="请填写用品单价"
+                                                    ng-model="item.price"></div>
+        </div>
+        <div class="line"></div>
+        <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+          <div class="col col-33 col-center" style="padding: 10px">数量：</div>
+          <div class="col col-66 col-center"><input type="number" style="background-color:white;width: 100%;"
+                                                    placeholder="请填写用品数量"
+                                                    ng-model="item.qty"></div>
+        </div>
+        <div class="line"></div>
+      </div>
+      <div class="text-center  padding-bottom asset-icon-add light-bg"
+           style="border-bottom:1px solid #ddd;color: #0072ff;padding-top: -15px;margin-top: 10px"
+           ng-click="getwareHouseinfo()">
+        <span>添加用品</span>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

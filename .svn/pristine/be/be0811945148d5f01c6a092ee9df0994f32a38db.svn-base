@@ -1,0 +1,33 @@
+<ion-view hide-nav-bar="true" class="login_bg" cache-view="true">
+  <ion-content class="no-padding">
+    <div class="logo">
+      <a href="#">
+        <img src="img/login.png" />
+      </a>
+    </div>
+    <div style="padding-top: 30px;">
+      <div class="list" style="margin-left:10%;margin-right:10%" >
+        <div class="item item-input"  style="border:none">
+          <i class="icon asset-icon-username "></i>
+          <input type="text"  placeholder="请输入用户名" ng-model="user.username" required>
+        </div>
+        <div class="item item-input  "  style="border:none" >
+          <i class="icon asset-icon-password "></i>
+          <input  type="password"  placeholder="请输入密码" name="password" ng-model="user.password" required  ng-if="!isShowPassword">
+          <input  type="text"  placeholder="请输入密码" name="password" ng-model="user.password" required  ng-if="isShowPassword">
+          <img class="margin-right-4" src="img/simple.png" ng-click="hidePassword()" ng-if="isShowPassword" style="height: 30px;weight:30px "/>
+          <img class="margin-right-4" src="img/secret.png" ng-click="showPassword()" ng-if="!isShowPassword" style="height: 30px;weight:30px "/>
+        </div>
+      </div>
+      <div style="padding: 10px 30px 0px 30px;">
+        <input type="button" class="button button-block" style="background-image:url(img/login_btn.png);color:white;border-radius: 10px;min-height: 35px;line-height: 35px;border:0px" ng-click="getBusinessCode()" value="登录">
+      </div>
+      <!--<div class="row padding-left padding-right" style="color: #0096df;text-align: right;" >-->
+      <!--<div class="col" ng-click="goForgetPW()"><span>忘记密码</span></div>-->
+      <!--</div>-->
+
+    </div>
+  </ion-content>
+</ion-view>
+
+

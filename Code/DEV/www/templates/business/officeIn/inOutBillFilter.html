@@ -1,0 +1,54 @@
+<ion-view view-title="筛选" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="font-size: 25px;color: white;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light" style="margin:0px;font-size: 14px;color: white"
+              ng-click="goClear()">清空
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="content-bg">
+    <div class="row row-no-padding light-bg" style="margin:10px 0px 0px 0px;border-top: solid 1px #ddd;"
+         ng-click="addDateRange()">
+      <div class="col col-33" style="padding: 10px">入库单号：</div>
+      <div class="col col-67 col-center text-right">
+        <input type="text" style="overflow:hidden;padding-left: 20px;" placeholder="请输入入库单号"
+               ng-model="modelData.billCode">
+      </div>
+    </div>
+    <div class="row row-no-padding light-bg"
+         style="margin:0px 0px 0px 0px;border-top: solid 1px #ddd;border-bottom: solid 1px #ddd;"
+         ng-click="addDateRange()">
+      <div class="col col-33" style="padding: 10px">经办人：</div>
+      <div class="col col-67 col-center text-right">
+        <input type="text" style="overflow:hidden;padding-left: 20px;" placeholder="请输入经办人姓名"
+               ng-model="modelData.psnName">
+      </div>
+    </div>
+      <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-top: solid 1px #ddd;"-->
+           <!--ng-click="addDateRange()">-->
+        <!--<div class="col col-33" style="padding: 10px">入库日期：</div>-->
+        <!--<div class="col col-67 col-center text-right">-->
+          <!--<input type="text" style="overflow:hidden;padding-left: 20px;background-color: white" placeholder="请输入入库日期区间" disabled="disabled"-->
+                 <!--ng-model="modelData.orderDate">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--<div class="row row-no-padding light-bg" style="padding: 0px;border-bottom: solid 1px #ddd;">-->
+      <!--<div class="col col-40">-->
+        <!--<button class="button-clear text-center button-middle " style="padding-top:3px;width: 100%;color: #111;font-size: 14px;" ng-model="modelData.beginDate" ng-click="openDatePicker(modelData.beginDate,'beginDate')">{{modelData.beginDateTime|date:'yyyy-MM-dd'}}</button>-->
+      <!--</div>-->
+      <!--<div class="col col-20 text-center" style="padding: 10px;background-color: white">至</div>-->
+      <!--<div class="col col-40">-->
+        <!--<button class="button-clear text-center button-middle " style="padding-top:3px;width: 100%;color: #111;font-size: 14px;" ng-model="modelData.endDate" ng-click="openDatePicker(modelData.endDate,'endDate')">{{modelData.endDateTime|date:'yyyy-MM-dd'}}</button>-->
+      <!--</div>-->
+    <!--</div>-->
+    <button class="button button-block"
+            style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: blue;color: white"
+            ng-click="goTrue()">确定
+    </button>
+  </ion-content>
+</ion-view>
+

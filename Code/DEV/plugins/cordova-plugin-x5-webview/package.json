@@ -1,0 +1,73 @@
+{
+  "name": "cordova-plugin-x5-webview",
+  "version": "3.1.3",
+  "description": "Changes the default WebView to Tencent X5 WebView",
+  "cordova": {
+    "id": "cordova-plugin-x5-webview",
+    "platforms": [
+      "android"
+    ]
+  },
+  "keywords": [
+    "cordova",
+    "chromium",
+    "x5",
+    "webview",
+    "tbs",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">=4"
+    },
+    {
+      "name": "cordova-plugman",
+      "version": ">=5.2.0"
+    }
+  ],
+  "author": {
+    "name": "Jeremy",
+    "email": "swang0619@gmail.com"
+  },
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremyup/cordova-plugin-x5-webview.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jeremyup/cordova-plugin-x5-webview/issues"
+  },
+  "homepage": "https://github.com/jeremyup/cordova-plugin-x5-webview#readme",
+  "gitHead": "8dbc8bb425fa2d92be89c582e3f2b3fb9e5b09b0",
+  "_id": "cordova-plugin-x5-webview@3.1.3",
+  "_shasum": "6388af7db589f6a9c962414adb12a8135499bc1f",
+  "_from": "cordova-plugin-x5-webview@latest",
+  "_npmVersion": "4.2.0",
+  "_nodeVersion": "4.8.3",
+  "_npmUser": {
+    "name": "jeremyup",
+    "email": "swang0619@gmail.com"
+  },
+  "dist": {
+    "shasum": "6388af7db589f6a9c962414adb12a8135499bc1f",
+    "tarball": "https://registry.npmjs.org/cordova-plugin-x5-webview/-/cordova-plugin-x5-webview-3.1.3.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "jeremyup",
+      "email": "swang0619@gmail.com"
+    }
+  ],
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-plugin-x5-webview-3.1.3.tgz_1495505459366_0.9834123698528856"
+  },
+  "directories": {},
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-x5-webview/-/cordova-plugin-x5-webview-3.1.3.tgz"
+}

@@ -1,0 +1,181 @@
+<ion-view view-title="办公用品领用申请" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+      </button>
+    </ion-nav-buttons>
+    <ion-content class="content-bg">
+      <div class="list">
+        <div class="row row-no-padding light-bg"
+             style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+          <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:white;">*</span>申请人：</div>
+          <div class="col col-30 col-center text-right">
+            <input type="text" class="text-right" style="width:90%;margin-left:80%"
+                   ng-model="modelData.outbounderName"></input>
+          </div>
+        </div>
+
+        <div class="row row-no-padding light-bg"
+             style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+          <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:white;">*</span>部门：</div>
+          <div class="col col-30 col-center text-right">
+            <input type="text" class="text-right" style="width:90%;margin-left:80%"
+                   ng-model="modelData.officeName"></input>
+          </div>
+        </div>
+
+        <div class="row row-no-padding light-bg"
+             style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+          <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:white;">*</span>申请时间：</div>
+          <div class="col col-30 col-center text-right">
+            <div class="button-clear text-right" style="width:90%;margin-left:80%;color: #111;font-size: 14px;"
+                 ng-model="modelData.outboundDate"
+            >{{modelData.outboundDate|date:'yyyy-MM-dd'}}
+            </div>
+          </div>
+        </div>
+
+        <div class="row row-no-padding light-bg" ng-click="goSelectAssetType()"
+             style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+          <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:red;">*</span>用品分类：</div>
+          <div class="col col-30 col-center text-right">
+            <input type="text" style="width:90%;margin-left:80%" class="text-right" placeholder="请选择用品分类"
+                   ng-model="modelData.sortName"/>
+          </div>
+          <div class="col col-25 text-right col-center">
+            <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+          </div>
+        </div>
+
+
+        <div class="item item-input">
+          <div class="input-label" style="font-size: 14px;width: 28%;color: black"><span style="color:red;">*</span>数量：
+          </div>
+          <input type="text" ng-model="modelData.outboundNumber" class="text-right digits"
+                 placeholder="请输入领用数量"></input>
+        </div>
+        <div class="item item-input">
+          <div class="input-label" style="font-size: 14px;width: auto;color: black"><span style="color:white;">*</span>备注
+          </div>
+          <input type="text" ng-model="modelData.remarks" class="text-right" placeholder="请输入备注">
+        </div>
+        <div>
+          <div class="light-bg" ng-repeat="item in items" type="item-text-wrap">
+            <div class="row" style="margin: 0;padding: 0;background-color:#F5F5F5;">
+              <div class="col col-33 col-center font-small"
+                   style="color: #938E99;font-weight: bold;">仓库物品{{item.detailId}}
+              </div>
+              <div class="col col-66 text-right col-center">
+                <i style=" font-size: 14px;color: #0072ff;padding-right: 10px" ng-if="step=='2'"
+                   ng-click="showConfirm(item.detailId)">删除</i>
+              </div>
+            </div>
+            <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+              <div class="col col-33 col-center" style="padding: 10px">办公用品编码：</div>
+              <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                        style="width: 90%;background-color: white" disabled="disabled"
+                                                        placeholder="办公用品编码"
+                                                        ng-model="item.articlesCode"></div>
+            </div>
+            <div class="line"></div>
+            <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+              <div class="col col-33 col-center" style="padding: 10px">办公用品名称：</div>
+              <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                        style="width: 90%;background-color: white" disabled="disabled"
+                                                        placeholder="办公用品名称"
+                                                        ng-model="item.articlesName"></div>
+            </div>
+            <!--<div class="line"></div>-->
+            <!--<div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">-->
+            <!--<div class="col col-33 col-center" style="padding: 10px">办公类别名称：</div>-->
+            <!--<div class="col col-66 col-center"><input type="text" class="text-right" style="width: 90%;background-color: white" disabled="disabled"-->
+            <!--placeholder="办公类别名称"-->
+            <!--ng-model="item.sortName"></div>-->
+            <!--</div>-->
+            <div class="line"></div>
+            <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+              <div class="col col-33 col-center" style="padding: 10px">品牌名称：</div>
+              <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                        style="width: 90%;background-color: white" disabled="disabled"
+                                                        placeholder="品牌名称"
+                                                        ng-model="item.brand"></div>
+            </div>
+            <div class="line"></div>
+            <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+              <div class="col col-33 col-center" style="padding: 10px">规格型号：</div>
+              <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                        style="width: 90%;background-color: white" disabled="disabled"
+                                                        placeholder="规格型号"
+                                                        ng-model="item.version"></div>
+            </div>
+            <div class="line"></div>
+            <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+              <div class="col col-33 col-center" style="padding: 10px">仓库名称：</div>
+              <div class="col col-66 col-center"><input type="text" class="text-right"
+                                                        style="width: 90%;background-color: white" disabled="disabled"
+                                                        placeholder="仓库名称"
+                                                        ng-model="item.whName"></div>
+            </div>
+            <div class="line"></div>
+            <div class="row row-no-padding light-bg" style="margin: 0px;border-top:1px solid #ddd;">
+              <div class="col col-33 col-center" style="padding: 10px">出库数量：</div>
+              <div class="col col-66 col-center"><input type="number" class="text-right number"
+                                                        style="width: 90%;background-color: white"
+                                                        ng-blur="changeNumber(item.detailId)" placeholder="出库数量"
+                                                        ng-model="item.outboundNumber"></div>
+            </div>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="text-center padding-top padding-bottom erp-icon-add light-bg" ng-if="step=='2'"
+             style="border-bottom:1px solid #ddd;color: #0072ff;margin-bottom:50px"
+             ng-click="getwareHouseinfo()">
+          <span>添加仓库物品</span>
+        </div>
+
+        <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;"-->
+        <!--ng-click="selectApply()" ng-if="ApprovalType=='0'&&(step==''||step=='0'||step=='1')">-->
+        <!--<div class="col col-40" style="padding: 10px;margin-left: 2%">审批人：</div>-->
+        <!--<div class="col col-30 col-center text-right">-->
+        <!--<input type="text" class="text-right" style="margin-left: 30%" ng-model="approval.refName"-->
+        <!--placeholder="请选择审批人"></input>-->
+        <!--</div>-->
+        <!--<div class="col col-25 text-right col-center">-->
+        <!--<i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--选择审批人-->
+        <div class="row row-no-padding light-bg" ng-click="selectApply()" style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;"
+             ng-if="ApprovalType=='0'&&(step==''||step=='0'||step=='1')">
+          <div class="col col-40" style="padding: 10px;margin-left: 2%"><span style="color:white;">*</span>审批人：</div>
+          <div class="col col-30 col-center text-right">
+            <input type="text" style="width:90%;margin-left:80%"class="text-right" placeholder="请选择审批人" ng-model="approval.refName" />
+          </div>
+          <div class="col col-25 text-right col-center">
+            <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+          </div>
+        </div>
+          <button class="button button-block" ng-if="stepType==''"
+                  style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: rgb(75,141,250);color: white"
+                  ng-click="toSubmit()">提交
+          </button>
+        </div>
+      </div>
+      <div style="margin-bottom:100px"></div>
+    </ion-content>
+    <div class="rrs-product-orderATP-ckAll tabs tabs-icon-left  row row-no-padding text-center no-margin"
+         ng-if="stepType=='Approve'"
+         style="color: #4d4d4d;background-image: linear-gradient(0deg, #eeeeee, #eeeeee 50%, transparent 50%);">
+      <a class="tab-item col col-33" ng-click="goApproval()">
+        <i class="icon asset-icon-approval"></i>
+        {{step=='3'?'确认':(step=='4'?'确认':"同意")}}
+      </a>
+      <a class="tab-item col col-33" ng-click="refuseBill()" ng-if="step==''||step=='0'||step=='1'||step=='2'">
+        <i class="icon asset-icon-refuse"></i>
+        拒绝
+      </a>
+    </div>
+  </ion-nav-bar>
+</ion-view>
+

@@ -1,0 +1,33 @@
+<ion-view view-title="忘记密码" cache-view="false">
+  <ion-nav-bar class="bar-erp-billblue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-arrow-left"   style="color: white;font-size: 25px;width: 50px;padding-right: 30px"ng-click="goBack()"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+      <div class="row rrs-product-orderATP-margin3" style="margin-top: 5%;margin-bottom: 10%;">
+        <span class="font-small" style="padding-left: 15px;color: #858E99">验证码已经发送至:{{modelData.mobile}}</span>
+      </div>
+
+      <div class="row row-no-padding" style="margin-left: 15px">
+        <div class="col col-33 col-center" style="border-radius: 2px;border: 1px solid #5789C3;padding: 0px;margin: 0px;line-height: 30px">
+          <input type="number" style="width: 100%;padding-left: 5px" placeholder="请输入验证码" ng-model="modelData.yzCode">
+        </div>
+        <div class="col col-50 col-center" ng-click="getCode()" ng-if="phone.timer == 0"
+             style="border-radius: 2px;border: 1px solid #2e9e3b;padding: 0px;line-height: 30px;margin-left: 20px;background-color: #2e9e3b;">
+          <span style="line-height: 34px; padding-left: 25px; color: white" >点击获取验证码</span>
+        </div>
+        <div class="col col-50 col-center" ng-if="phone.timer != 0"
+             style="border-radius: 2px;border: 1px solid #808080;padding: 0px;line-height: 30px;margin-left: 20px;background-color: #808080;">
+          <span style="line-height: 34px; padding-left: 15px; color: white" >正在获取验证码({{phone.timer}})</span>
+        </div>
+      </div>
+
+      <div style="padding: 20% 20px 0px 20px;">
+        <input type="button" class="button button-block" style="background-color: #3a9bf0;color: #ffffff;border-radius: 5px;min-height: 35px;line-height: 35px;" ng-click="goNext()" value="下一步">
+      </div>
+    </ion-content>
+</ion-view>
+
+

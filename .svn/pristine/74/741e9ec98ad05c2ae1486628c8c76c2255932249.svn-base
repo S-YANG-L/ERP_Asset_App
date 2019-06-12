@@ -1,0 +1,73 @@
+<ion-view view-title="领用" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+<ion-nav-buttons side="left">
+    <button class="button button-clear button-light icon-small asset-icon-back"
+            style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+    </button>
+
+  <!--1-->
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-block button-light asset-icon-add"
+            style="margin:0px;font-size: 14px;color: white" ng-click="BoundApply()"></button>
+  </ion-nav-buttons>
+  </ion-nav-bar>
+<ion-content style="margin: 0px;padding: 0px">
+  <div class="item item-input-inset" style="padding: 0px;">
+    <label class="item-input-wrapper">
+      <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+      <input type="search" placeholder="请输入关键字" ng-model="searchContent">
+    </label>
+  </div>
+  <!--下拉刷新-->
+  <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh(true)" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+  <ion-list class="has-tabs-top">
+    <div ng-repeat="doneItem in todoList|filter:searchContent">
+      <div class="row row-no-padding font-small padding-horizontal no-margin" style="margin-bottom: 5px"
+           ng-click="goDetail(doneItem)">
+        <div class=" font-xsmall" style="width: 40px;padding-top: 32px">
+          <div
+            style="padding-left:4px;padding-top:7px;color: #fff;width: 32px; height: 32px;-moz-border-radius: 16px;
+                -webkit-border-radius: 16px;border-radius: 16px;
+              background-color:#9B80B5">
+            出库
+          </div>
+        </div>
+        <div style="width: 88%" class="font-small">
+          <div class="row row-no-padding" style="margin-bottom: 5px">
+            <div class="col col-50">{{doneItem.receiverName}}
+            </div>
+            <div class="col text-right" style="color: #AAAAAA;">{{doneItem.receiverDate|date:'yyyy-MM-dd'}}</div>
+          </div>
+          <div class="row row-no-padding" style="margin: 0px 0px 3px 0px;color: #FE943E;">
+            <div class="col col-66">
+              分类名称：{{doneItem.assetClass}}
+            </div>
+            <div class="col col-50" style="padding-left: 12px">
+              部门：{{doneItem.usedOfficeName}}
+            </div>
+          </div>
+          <div class="row row-no-padding" style="margin: 0px 0px 3px 0px;color: #FE943E;">
+            <div class="col col-60">
+              出库数量：{{doneItem.numberRecipients}}
+            </div>
+            <div class="col col-50" style="margin-left: 6px">
+              审批状态：<span>
+                {{doneItem.approvalStatus=='0'?'撤回':(doneItem.approvalStatus=='1'?'审批中':(doneItem.approvalStatus=='2'?'通过':'未通过'))}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="line"></div>
+    </div>
+  </ion-list>
+  <div style="text-align: center;padding-top: 25%;color: rgb(173,173,173)" ng-hide="blank">
+    <div class="asset-icon-coffee_1" style="font-size: 50px"></div>
+    <span>暂无领用记录~~</span>
+  </div>
+  <!--上拉加载-->
+  <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()" distance="1%"></ion-infinite-scroll>
+</ion-content>
+
+</ion-view>

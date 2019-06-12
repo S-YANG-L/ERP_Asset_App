@@ -1,0 +1,195 @@
+<ion-view view-title="资产详情">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-block button-light icon-small asset-icon-back"
+              style="margin:0px; font-size: 25px;color: white" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content style="">
+    <div style="margin:10px 0px 0px 0px;font-family:SimHei;  background-color: #ffffff;border-radius: 3px;">
+      <div class="col" ng-class="isGroupShown(item)" ng-click="toggleGroup($index)">
+        <div class="row no-margin row-no-padding" style="height: 160px;">
+          <div class="col text-center" >
+            <!--picturePath-->
+            <img  src="http://www.botemc.com/{{item.picturePath}}"  style="height:160px;"  ng-if="!status">
+          </div>
+        </div>
+
+        <div class="col" style="border-bottom: solid 0px #eeeeee;">
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">资产大类：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.topSortName}}</div>
+            </div>
+          </div>
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">资产小类：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.sortName}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">资产名称：</div>
+            </div>
+            <div class=" col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.assetName}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">购买日期：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.buyDate}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">使用部门：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.officeName}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">使用人：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.userName}}</div>
+            </div>
+          </div>
+
+          <!--<div class="row row-center row-no-padding" style="margin: 2px 0px">-->
+            <!--<div class="col col-40">-->
+              <!--<div class="font-big" style="padding-left: 15px;color: #7e8793">财务编码：</div>-->
+            <!--</div>-->
+            <!--<div class="  col col-60 text-right">-->
+              <!--<div class="font-big" style="padding-right: 10px;color: black">{{item.financeCode}}</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">品牌：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.brand}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">型号：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.version}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">计量单位：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.unit}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">原值：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.unitPrice}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">数量：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.quantity}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">净残值率(%)：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.residualValue}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">区域名称：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.regionName}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">是否折旧：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.accountStatus=='0'?'折旧':(item.accountStatus=='1'?'不折旧':'')}}
+              </div>
+            </div>
+            </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">存放地点：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.storagePlace}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">使用年限(月)：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.ageLimit}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">供货商：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.supplier}}</div>
+            </div>
+          </div>
+
+          <div class="row row-center row-no-padding" style="margin: 2px 0px">
+            <div class="col col-40">
+              <div class="font-big" style="padding-left: 15px;color: #7e8793">备注：</div>
+            </div>
+            <div class="  col col-60 text-right">
+              <div class="font-big" style="padding-right: 10px;color: black">{{item.remarks}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

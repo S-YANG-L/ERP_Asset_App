@@ -1,0 +1,72 @@
+<ion-view view-title="资产列表" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-block button-light icon-small asset-icon-back"
+              style="margin:0px; font-size: 25px;color: white" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light asset-icon-add"
+              style="margin:0px;font-size: 14px;color: white" ng-click="getAdd()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="content-bg" scroll="true" overflow-scroll="true">
+    <!--搜索和筛选-->
+    <div class="item item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="asset-icon-search" style="color: #AAAAAA;"></i>
+        <input type="search" placeholder="输入关键字查询" ng-model="searchContent">
+      </label>
+      <!--<label class="item item-input-inset" style="border: none">-->
+      <!--<label class="item-input-wrapper">-->
+      <!--<i class="item-input-wrapper" style="color: #AAAAAA;"></i>-->
+      <!--<button class="button button-clear  button-block asset-icon-ecode  button-light"-->
+      <!--style="color: white;font-size: 20px;width: 50px;padding-left: 10px "ng-click="getFilter()"></button>-->
+      <!--</label>-->
+      <!--</label>-->
+    </div>
+    <!--下拉刷新-->
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"
+                   pulling-icon="rrs-icon-pull-down"></ion-refresher>
+    <!--数据列表-->
+    <!--搜索-->
+    <ion-list class="has-tabs-top">
+      <div class="row row-no-padding no-margin" style="line-height: 15px;vertical-align: middle;"
+           ng-repeat="item in assetCardList| filter:searchContent">
+        <div class="col" ng-class="isGroupShown(item)" ng-click="goDetail(item)"
+             style="width:100%;background-color:#ffffff;border-radius: 10px;margin: 8px;padding:10px;display: inline-block">
+          <div class="row row-no-padding padding-horizontal no-margin">
+            <div style="width: 100%" class=" font-small ">
+              <div class="row row-no-padding" style="border-bottom: solid 1px #dedfe0;margin:0px;">
+                <div class="col col-40"
+                     style="line-height: 15px;height: 18px;border-radius: 5px;margin: 10px 10px 5px 5px;padding-top:1px;text-align: center;color: #fff;float: left;
+                             background-color:#4b8dfa;">
+                  状态：{{item.assetStatus=='0'?'闲置':(item.assetStatus=='1'?'领用':(item.assetStatus=='4'?'报废':(item.assetStatus=='5'?'调拨中':(item.assetStatus=='6'?'已捐献':(item.assetStatus=='7'?'到新单位':'到新单位')))))}}
+                </div>
+                <div class="col text-right" style="padding: 10px 5px 5px 5px;color: rgb(255,126,0)">
+                  {{item.buyDate.substr(0,10)}}
+                </div>
+              </div>
+              <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;">
+                <div class="col col-66">资产小类：{{item.sortName}}</div>
+                <div class="col col-50">资产名称：{{item.assetName}}</div>
+              </div>
+              <div class="row row-no-padding" style="margin: 3px 0px;color: #434e4a;">
+                <div class="col col-66">使用人：{{item.userName.substr(0,7)}}</div>
+                <div class="col col-50">使用部门：{{item.officeName}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </ion-list>
+    <div style="text-align: center;padding-top: 25%;color: rgb(173,173,173)" ng-hide="blank">
+      <div class="asset-icon-coffee_1" style="font-size: 50px"></div>
+      <span>暂无资产信息~~</span>
+    </div>
+    <!--上拉加载-->
+    <ion-infinite-scroll ng-if="hasMore" on-infinite="doLoadMore()"
+                         distance="1%"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+
+

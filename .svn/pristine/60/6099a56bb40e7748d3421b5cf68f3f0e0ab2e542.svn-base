@@ -1,0 +1,90 @@
+<ion-view view-title="重置密码" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-arrow-left"
+              style="color: white;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content>
+    <!--<div class="x-col" style="padding:0px;">-->
+      <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 32px;padding-bottom:0px;padding-top:10px;">-->
+        <!--<div class="col col-25 col-center" style="">登录账号：</div>-->
+      <!--</div>-->
+      <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 32px;padding-bottom:0px;">-->
+        <!--<div class="col col-80 col-center">-->
+          <!--<input type="text" style="width: 100%; " readonly="!{{modelData.loginCode}}" placeholder="请输入登录账号"-->
+                 <!--ng-model="modelData.loginCode">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div-->
+      <!--style="width:80%;margin-left:32px;background-color:#95A3C0;border-top-style:solid;border-top-width:1px;border-top-color:#95A3C0;"></div>-->
+    <!--<div class="x-col" style="padding:0px;">-->
+      <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 32px;padding-bottom:0px;padding-top:10px;">-->
+        <!--<div class="col col-25 col-center" style="">新密码：</div>-->
+      <!--</div>-->
+      <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 32px;padding-bottom:0px;">-->
+        <!--<div class="col col-80 col-center">-->
+          <!--<input type="password" style="width: 100%; " placeholder="请输入新密码" ng-model="modelData.password">-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div-->
+      <!--style="width:80%;margin-left:32px;background-color:#95A3C0;border-top-style:solid;border-top-width:1px;border-top-color:#95A3C0;"></div>-->
+    <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 32px;padding-bottom:0px;padding-top:10px;">-->
+      <!--<div class="col col-25 col-center" style="">确认密码：</div>-->
+    <!--</div>-->
+    <!--<div class="row row-no-padding light-bg" style="margin:0px 0px 0px 32px;padding-bottom:0px;">-->
+      <!--<div class="col col-80 col-center">-->
+        <!--<input type="password" style="width: 100%; " placeholder="请再次输入密码" ng-model="modelData.confirmNewPassword">-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div-->
+      <!--style="width:80%;margin-left:32px;background-color:#95A3C0;border-top-style:solid;border-top-width:1px;border-top-color:#95A3C0;"></div>-->
+    <!--<button class="button button-block"-->
+            <!--style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: #4B8DFA;color: white"-->
+            <!--ng-click="toSubmit()">确认-->
+    <!--</button>-->
+    <!--数据列表-->
+    <ion-list>
+      <div class="light-bg" >
+        <ion-item  class="padding-vertical">
+          <div>
+            <span class="font-small">密码可用于登陆手机版和电脑版</span>
+          </div>
+          <div class="row row-no-padding row-center padding-top">
+            <div class="col-25 ">
+              原密码
+            </div>
+            <div class="col-75 padding-horizontal" style="padding-left: 20px">
+              <input type="password" placeholder="请输入原密码" class="full-horizontal" ng-model="modelData.oldPassword">
+            </div>
+          </div>
+        </ion-item>
+        <ion-item  class="padding-vertical">
+          <div class="row row-no-padding row-center">
+            <div class="col-25 ">
+              新密码
+            </div>
+            <div class="col-75 padding-horizontal" style="padding-left: 20px">
+              <input type="password" placeholder="请输入新密码" class="full-horizontal" ng-model="modelData.newPassword">
+            </div>
+          </div>
+        </ion-item>
+        <ion-item  class="padding-vertical">
+          <div class="row row-no-padding row-center">
+            <div class="col-25 ">
+              确认新密码
+            </div>
+            <div class="col-75 padding-horizontal" style="padding-left: 20px">
+              <input type="password" placeholder="请确认新密码" class="full-horizontal" ng-model="modelData.confirmNewPassword">
+            </div>
+          </div>
+        </ion-item>
+      </div>
+
+      <button class="button button-block "style="width: 80%;margin-left: 32px; margin-top: 30px;background-color: #1E81D2;color: white" ng-click="toSubmit()">提交</button>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

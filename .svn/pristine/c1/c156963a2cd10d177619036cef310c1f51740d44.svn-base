@@ -1,0 +1,144 @@
+<ion-view view-title="调拨单详情" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="font-size: 25px;color: white;width: 50px;padding-right: 30px"
+              ng-click="goBack()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="content-bg has-header has-footer" style="background-color: white">
+    <div class="light-bg padding-top">
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">调拨人：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small" style="">{{outBoundApply.operatorName}}</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">调拨日期：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small" style="color: #7E8793">{{outBoundApply.allotDate}}</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">使用部门：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small" style="">{{outBoundApply.officeName}}</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">调拨单号：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small" style="">{{outBoundApply.allotCode}}</div>
+        </div>
+      </div>
+
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">调拨类型：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small bold" style="color: #7E8793">{{outBoundApply.allotTypeName}}</div>
+        </div>
+      </div>
+
+      <div class="row row-center row-no-padding" style="margin: 2px 0px" ng-if="outBoundApply.allotTypeName=='调拨到部门'">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">调拨后部门：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small bold" style="color: #7E8793">{{outBoundApply.allotOfficeName}}</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px" ng-if="outBoundApply.allotTypeName=='调拨到新单位'">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">新单位：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small bold" style="color: #7E8793">{{outBoundApply.allotCompanyName}}</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class=" text-left col-33">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">备注：</div>
+        </div>
+        <div class=" text-left">
+          <div class="font-small bold" style="color: #7E8793">{{outBoundApply.remarks}}</div>
+        </div>
+      </div>
+      <div class="line"></div>
+    </div>
+    <div class="line-margin"></div>
+    <div ng-repeat="outboundBillDtl in outboundBillDtlList" style="background-color: white">
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class="text-left">
+          <div class="font-small icon {{
+                $index=='0'?'asset-icon-number':(
+                $index=='1'?'asset-icon-number2':(
+                $index=='2'?'asset-icon-number3':(
+                $index=='3'?'asset-icon-number4':(
+                $index=='4'?'asset-icon-number5':(
+                $index=='5'?'asset-icon-number6':(
+                $index=='6'?'asset-icon-number7':(
+                $index=='7'?'asset-icon-number8':(
+                $index=='8'?'asset-icon-number9':(
+                $index=='9'?'asset-icon-number10':
+               'asset-icon-number'))) ))))))}}" style="padding-left: 15px;font-size: 15px;color:#0c60ee"></div>
+        </div>
+        <div class="col">
+          <div class="font-small" style="color: #7E8793;padding-left: 20px;font-weight: bold"> 资产明细</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class="text-left">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">资产分类名称：</div>
+        </div>
+        <div class="text-left">
+          <div class="font-small" style="color: #7E8793">{{outboundBillDtl.sortName}}</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class="text-left">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">资产编码：</div>
+        </div>
+        <div class="text-left">
+          <div class="font-small" style="">{{outboundBillDtl.assetCode}}</div>
+        </div>
+      </div>
+
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class="text-left">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">资产名称：</div>
+        </div>
+        <div class="text-left">
+          <div class="font-small" style="color: #7E8793">{{outboundBillDtl.assetName}}</div>
+        </div>
+      </div>
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class="text-left">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">品牌：</div>
+        </div>
+        <div class="text-left">
+          <div class="font-small" style="color: #7E8793">{{outboundBillDtl.brand}}</div>
+        </div>
+      </div>
+
+      <div class="row row-center row-no-padding" style="margin: 2px 0px">
+        <div class="text-left">
+          <div class="font-small" style="padding-left: 15px;color: #7E8793">型号：</div>
+        </div>
+        <div class="text-left">
+          <div class="font-small" style="color: #7E8793">{{outboundBillDtl.version}}</div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

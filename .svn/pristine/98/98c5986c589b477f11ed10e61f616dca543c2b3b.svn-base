@@ -1,0 +1,144 @@
+<ion-view title="资产维修单" cache-view="false" >
+
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+
+    <ion-nav-buttons side="left">
+      <!--button-clear-->
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: #fff;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()">
+      </button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button ng-click="submit()" type="button" class="button button-clear button-light"
+              style="color: #fff;font-size: 14px;font-weight: 400;">保存
+      </button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="" style="height: 85%">
+    <div class="list">
+      <div class="item item-input" ng-click="goSelectPerson()">
+        <span class="input-label" style="font-size: 14px;width: 28%;">变更单号</span>
+        <!--<div class="row row-no-padding" style="max-width: 65%;margin:0px;">-->
+        <!--<div type="text" class="text-right"style="width: 100%;font-size: 14px" >{{leader.userName}}</div >-->
+        <!--</div>-->
+        <input type="text" class="text-right" ng-model="leader.userName" placeholder="">
+      </div>
+
+      <div class="item item-input item-icon-right">
+        <span class="input-label" style="font-size: 14px;width: 28%;">业务日期：</span>
+        <div class="row row-no-padding" style="max-width: 65%;margin:0px;">
+          <div class="col">
+            <div class="button-clear text-right" style="width: 100%;color: #111;font-size: 14px"
+                 ng-model="modelData.useBeginDate"
+                 ng-click="openDatePicker()">{{modelData.useBeginDate|date:'yyyy-MM-dd'}}
+            </div>
+          </div>
+        </div>
+        <i class="icon asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;right: 0px;"></i>
+      </div>
+      <div class="item item-input" ng-click="goSelectCompany()">
+        <span class="input-label" style="font-size: 14px;width: 28%;">处理人：</span>
+        <input type="text" class="text-right" ng-model="company.name" placeholder="">
+      </div>
+      <div class="item item-input" ng-click="goSelectdepartment()">
+        <span class="input-label" style="font-size: 14px;width: 28%;">维修花费：</span>
+        <input type="text" class="text-right" ng-model="department.departmenName" placeholder="请输入维修花费">
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="font-size: 14px;width: 28%;">维修内容：</span>
+        <input type="text" class="text-right" placeholder="请输入维修内容"></input>
+      </div>
+      <div class="item item-input">
+        <span class="input-label" style="font-size: 14px;width: 28%;">报修人：</span>
+        <input type="text" class="text-right" placeholder=""></input>
+      </div>
+      <div class="">
+        <span class="input-label" style="font-size: 14px;width:28%;margin-left:14px;display: inline-block">维修状态：</span>
+        <div class="row row-no-padding" style="width: 35%;display: inline-block;margin-left: 110px">
+          <input type="radio" name="group" value="0" ng-model="modelData.leave" />
+          <label>维修中</label>
+          <input type="radio" name="group" value="0" ng-model="modelData.leave" />
+          <label>已完成</label>
+        </div>
+      </div>
+      <!--<div class="item item-input">-->
+        <!--<span class="input-label" style="font-size: 14px;width: 28%;">领用处理人</span>-->
+        <!--<input type="text" class="text-right" placeholder="请输入领用处理人">-->
+      <!--</div>-->
+      <!--<div class='content' ng-app>-->
+        <!--<select style="width: 100%;height: 30px;" ng-model="selectedDistrict" ng-change="selectedUnit=''"-->
+                <!--ng-options="district.name for district in districts">-->
+          <!--<option value="">审批人</option>-->
+        <!--</select>-->
+      <!--</div>-->
+
+
+      <!--疑问**************************************************************-->
+      <div class="item item-input">
+        <span class="input-label" style="font-size: 14px;width: auto;">备注</span>
+        <input type="text" class="text-right" placeholder="请输入备注">
+      </div>
+
+      <!--*************************************************************************************************-->
+      <!--&nbsp;&nbsp;&nbsp;&nbsp;<span class="">请添加要领用的资产</span>-->
+      <!--<div style="padding-left: 15px;">-->
+        <!--&lt;!&ndash;显示&ndash;&gt;-->
+        <!--<div class="row row-no-padding no-margin" style="margin-left: 60px;width:80%;line-height: 20px;vertical-align: middle;"-->
+             <!--ng-repeat="item in btypeInfoList| filter:searchContent">-->
+
+          <!--&lt;!&ndash;左侧选择按钮&ndash;&gt;-->
+          <!--<input type="checkbox" name="pushType" id="checkJpush"-->
+                 <!--style="position: relative;height: 100px;left: -30px ;margin-right: 1px;display:inline-block"/>-->
+          <!--&lt;!&ndash;资产条码和资产名称&ndash;&gt;-->
+
+          <!--<div class="col"   ng-class="isGroupShown(item)" ng-click="toggleGroup($index)"-->
+               <!--style="width:70%;background-color: #eeeeee;border-radius: 10px;margin: 5px;padding:10px;display: inline-block">-->
+            <!--<div class="padding-top" style="margin-left: 60px">资产编码:{{item.assetCode}}-->
+            <!--</div>-->
+            <!--<div class="padding-top" style="margin-left: 60px">资产名称:{{item.assetName}}-->
+            <!--</div>-->
+
+
+            <!--&lt;!&ndash;隐藏&ndash;&gt;-->
+            <!--<div  ng-show="isGroupShown(item)">-->
+              <!--<span>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</span>-->
+              <!--<div class="col"  style="border-bottom: solid 1px #eeeeee;">-->
+                <!--<div >-->
+                <!--<div class="row row-center row-no-padding" style="margin: 2px 0px">-->
+                  <!--<div class="col-40">-->
+                    <!--<div class="font-small" style="color: #7E8793;text-align: right">所属公司：</div>-->
+                  <!--</div>-->
+                  <!--<div class=" text-left">-->
+                    <!--<div class="font-small" style="">{{item.company}}</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="row row-center row-no-padding" style="margin: 2px 0px">-->
+                  <!--<div class="col-40">-->
+                    <!--<div class="font-small" style="color: #7E8793;text-align: right">当前所在公司：</div>-->
+                  <!--</div>-->
+                  <!--<div class=" text-left">-->
+                    <!--<div class="font-small" style="">{{item.now_company}}</div>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+          <!--</div>-->
+    </div>
+  </ion-content>
+  <button class="button-1" style="z-index: 9999; padding: 10px;border-style: solid;color: white;font-size: 18px;"
+          ng-click="goAdd()">
+    添加资产
+  </button>
+  <button class="button-2" style="z-index: 9999;padding: 10px;border-style: solid;color: white;font-size: 18px;"
+          ng-click="saomiao()">
+    扫描添加
+  </button>
+  <button class="button-3" style="z-index: 9999;padding: 10px;border-style: solid;color: white;font-size: 18px;"
+          ng-click="delete()">
+    删除
+  </button>
+</ion-view>

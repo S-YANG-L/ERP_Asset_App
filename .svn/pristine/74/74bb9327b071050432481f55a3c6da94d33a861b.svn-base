@@ -1,0 +1,26 @@
+<ion-view view-title="基础数据" cache-view="true">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"style="font-size: 25px;color: white;width: 50px;padding-right: 30px"  ng-click="goBack()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="no-padding" overflow-scroll="true" class="has-header" >
+    <ion-list>
+      <ion-item class="item-stable item-icon-left item-icon-right" ng-click="assettype()">
+        <i class="icon asset-icon-asset" style="font-size: 25px"></i>
+        资产分类
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>
+      </ion-item>
+      <ion-item class="item-stable item-icon-left item-icon-right" ng-click="officeFile()">
+        <i class="icon asset-icon-addDate" style="font-size: 25px"></i>
+        办公用品档案
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>
+      </ion-item>
+      <ion-item class="item-stable item-icon-left item-icon-right" ng-click="wareHouse()">
+        <i class="icon asset-icon-sunny_fine_white" style="font-size: 25px"></i>
+        仓库
+        <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

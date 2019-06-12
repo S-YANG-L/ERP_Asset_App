@@ -1,0 +1,96 @@
+<ion-view view-title="借用归还单" cache-view="false">
+  <ion-nav-bar class="bar-erp-blue" align-title="center">
+    <ion-nav-buttons side="left">
+      <button class="button button-clear button-light icon-small asset-icon-back"
+              style="color: white;font-size: 25px;width: 50px;padding-right: 30px" ng-click="goBack()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-block button-light" style="margin:0px;font-size: 14px;color: white"
+              ng-click="toSubmit()">保存
+      </button>
+    </ion-nav-buttons>
+    <ion-content>
+      <i class="icon erp-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;right: 0px;"></i>
+      </div>
+      <div class="row row-no-padding light-bg"
+           style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;"
+           ng-click="goSelectPerson()">
+        <div class="col col-40" style="padding: 10px">借用人：</div>
+        <div class="col col-30  text-right">
+          <input style="width:90%;margin-left: 85%" type="text" class="text-right" ng-model="leader.userName"
+                 placeholder="请选择借用人">
+        </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+      <!--下拉刷新-->
+      <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh(true)" pulling-icon="rrs-icon-pull-down"></ion-refresher>
+
+      <div>
+        <div class="row row-no-padding light-bg"
+             style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+          <div class="col col-33" style="padding: 10px">借用处理人：</div>
+          <div class="col col-67 col-center text-right">
+            <div class="row row-no-padding"
+                 style="margin: 0px 0px 1px 0px;font-size: 14px;color:#000000;margin-left: 50%">{{user.userName}}
+            </div>
+          </div>
+        </div>
+        <div class="row row-no-padding light-bg"
+             style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+          <div class="col col-40" style="padding: 10px">借用日期：</div>
+          <div class="col col-30" style="padding-top: 3px">
+            <button class="button-clear text-left button-middle bold text-right"
+                    style="padding:0px;width: 100%;color: #333333;font-size: 13px;margin-left:75%"
+                    ng-model="modelData.beginDate" ng-click="openDatePicker(modelData.beginDate,'beginDate')">
+              {{modelData.beginDate|date:'yyyy-MM-dd'}}
+            </button>
+          </div>
+          <div class="col col-25 text-right col-center">
+            <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+          </div>
+        </div>
+      </div>
+      <div class="row row-no-padding light-bg"
+           style="margin:0px 0px 0px 0px;border-bottom: solid 1px #ddd;border-top: solid 1px #ddd;">
+        <div class="col col-40 col-center" style="padding: 10px">预计归还日期：</div>
+        <div class="col col-30 col-center">
+          <button class="button-clear text-left button-middle bold text-right"
+                  style="padding:0px;width: 100%;color: #333333;font-size: 13px;margin-left:75%"
+                  ng-model="modelData.endDate" ng-click="openDatePicker(modelData.endDate,'endDate')">
+            {{modelData.endDate|date:'yyyy-MM-dd'}}
+          </button>
+        </div>
+        <div class="col col-25 text-right col-center">
+          <i class="icon icon-right asset-icon-arrow-right" style="font-size: 24px;color: #c0c0c0;"></i>
+        </div>
+      </div>
+
+      <div class="row row-no-padding light-bg"
+           style="border-top:1px solid #ddd;border-bottom:1px solid #ddd;margin-bottom: 0px;">
+        <div class="col col-40" style="padding: 10px 0px 10px 10px;width: 100%">备注：</div>
+        <div class="col col-60">
+            <textarea type="text" style="padding-top:10px;width:90%;margin-right: 20%;height: 80px;resize:none;"
+                      class="text-right " placeholder="请输入备注"
+                      ng-model="modelData.content"></textarea>
+        </div>
+      </div>
+      </div>
+      <div style="margin-top:100%">
+        <button class="button-4"
+                style="padding: 10px;border-style: solid;color: white;font-size: 18px;width: 33.3%;float: left;"
+                ng-click="tianjia()">添加资产
+        </button>
+        <button class="button-5"
+                style="padding: 10px;border-style: solid;color: white;font-size: 18px;width: 33.3%;float: left;"
+                ng-click="saomiao()">扫描添加
+        </button>
+        <button class="button-6" style="padding: 10px;border-style: solid;color: white;font-size: 18px;width: 33.3%;"
+                ng-click="delete()">删除
+        </button>
+      </div>
+    </ion-content>
+
+</ion-view>
+
